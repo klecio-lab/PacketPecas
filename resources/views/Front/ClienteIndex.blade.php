@@ -36,11 +36,10 @@
       </header>
       <script src="Fjs/main.js"></script>   
 <center>
-          <div class="maquinas" style="background-image: url('Fimg/maquina3.png'); height: 500px;">
+          <div class="maquinas" style="background-image: url('Fimg/maquina3.png'); height: 500px; width: 100%;">
             <div style="margin-left: auto;
             margin-right: auto;
             width: 80em;">
-                <!-- <img  class="maquina-logo" src="maquina3.png" " alt="maquina"> -->
                 <img  class="" style="margin-top: 120px;" src="Fimg/logoGrande.png" alt="logo">
                 <h2 style="float: left;text-align: left; margin-top: 200px;">
                 <pre style="font-size: 22px">
