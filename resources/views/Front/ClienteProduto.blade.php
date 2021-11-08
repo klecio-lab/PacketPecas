@@ -6,23 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('Fcss/mainProdutos.css') }}">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
 
   <style>
@@ -31,6 +26,10 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            }
+            .menu a{
+              color: white;
+              text-decoration: none;
             }
   </style>
 
@@ -45,7 +44,7 @@
             <div class="line2"></div>
             <div class="line3"></div>
           </div>
-          <ul class="nav-list">
+          <ul class="nav-list menu">
             <li><a href="{{ route('ClienteHome') }}">Início</a></li>
             <li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
             <li><a href="{{ route('contato') }}">Contato</a></li>
@@ -64,38 +63,17 @@
 
       </div>
 
+
       <div class="sidenav">
-        <a href="#">FILTROS</a>
-        <hr class="hr2">
-        <button class="dropdown-btn">LINHAS DE PRODUTOS
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-container">
-            <a href="#">Produto 1</a>
-            <a href="#">Produto 2</a>
-            <a href="#">Produto 3</a>
-            <a href="#">Produto 4</a>
-            <a href="#">Produto 5</a>
-            <a href="#">Produto 6</a>
-            <a href="#">Produto 7</a>
-            <a href="#">Produto 8</a>
-            <a href="#">Produto 9</a>
+        <p>FILTROS</p>
+          <form action="{{ route('search') }}" method="post">
+          @csrf
+          <div class="form-outline">
+            <input type="search" id="buscar" name="buscar" class="form-control" />
           </div>
-        <button class="dropdown-btn">POR PEÇAS
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-          <a href="#">Peça 1</a>
-          <a href="#">Peça 2</a>
-          <a href="#">Peça 3</a>
-          <a href="#">Peça 4</a>
-          <a href="#">Peça 5</a>
-          <a href="#">Peça 6</a>
-          <a href="#">Peça 7</a>
-          <a href="#">Peça 8</a>
-          <a href="#">Peça 9</a>
+          <button type='submit' class="btn btn-primary">Pesquisar</button>
+          </form>
         </div>
-      </div>
 
       <script>
         var dropdown = document.getElementsByClassName("dropdown-btn");

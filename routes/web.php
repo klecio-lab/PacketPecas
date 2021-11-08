@@ -22,6 +22,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //Parte Frond End Cliente
 Route::get('ClienteProduto', [ClienteController::class, 'ClienteProduto'])->name('ClienteProduto');
 Route::get('ClienteProduto/{id}', [ClienteController::class, 'SubPagina'])->name('Subpagina');
+Route::any('pesquisar', [ClienteController::class, 'PesquisarProd'])->name('search');
 Route::get('contato', [ClienteController::class, 'contato'])->name('contato');
 
 
