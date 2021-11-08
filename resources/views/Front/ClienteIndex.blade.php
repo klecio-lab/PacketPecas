@@ -5,19 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Fcss/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,8 +58,7 @@
           
 
           <br>
-          <hr>
-          <br><br><br><br><br>
+          <br><br><br><br>
       <div class="row">
           <div class="column">
               <img src="Fimg/qualidade.png" alt="qualidade">
@@ -93,7 +84,9 @@
             <p> Peças originais, Peças de terceiros e até kits completos, podemos oferecer suporte ao seu processo </p>
            </div>
        </div>
-      
+       <hr>
+       <br>
+       <br>
        <!-- parte do serviços -->
 
         <div>
@@ -104,14 +97,14 @@
 
 
           <div class="gallery">
-            <a href="#">
+            <a href="{{ route('ClienteProduto') }}">
             <img class="peças-1" src="Fimg/peças.png" alt="Peças" width="600" height="400">
             <div class="desc">Peças de reposição</div>
             </a>
           </div>
 
           <div class="gallery">
-            <a href="#">
+            <a href="https://api.whatsapp.com/send?phone=5581995247120&text=estou%20testando%20a%20api%20de%20enviar%20mensagem%20via%20whatzap%20">
             <img  class="peças-1" src="Fimg/homemTrabalhando.png" alt="Trabalho" width="1200" height="800">
             <div class="desc">Serviços para manutenção</div>
             </a>
