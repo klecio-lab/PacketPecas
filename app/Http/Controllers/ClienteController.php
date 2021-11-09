@@ -10,7 +10,7 @@ class ClienteController extends Controller
 {
     public function ClienteProduto()
     {
-        $produto = cadastroproduto::all();
+        $produto = cadastroproduto::paginate(6)->withQueryString();
         // dd($produto);
         return view('Front.ClienteProduto', compact('produto'));
     }

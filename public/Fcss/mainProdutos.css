@@ -118,9 +118,8 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 105px;
-  position: relative;
-  left: 14%;
-
+  position: flex;
+  /* left: 14%; */
 
 }
 
@@ -164,9 +163,8 @@
   padding: 10px 0;
   text-align: center;
   color: #131313;
-  position: relative;
-  top: 130px;
-  left: 13%;
+  position: flex;
+  top: auto;
 }
 
 

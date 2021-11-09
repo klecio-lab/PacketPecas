@@ -103,33 +103,30 @@
     transform: rotate(45deg) translate(-5px, -7px);
   }
 
-  .sidenav {
+  .infoProdutos {
     height: 5%;
-    position: relative;
-    z-index: 1;
     top: 13%;
     left: 50%;
-    background-color: rgb(255, 255, 255);
-    overflow-x: hidden;
     padding-top: 10px;
+    font-family: 'Rajdhani', sans-serif;
   }
   
-  .sidenav a, .dropdown-btn {
+  .infoProdutos a, .dropdown-btn {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
     color: #000000;
-    display: block;
     border: none;
     background: none;
     width: 100%;
     text-align: left;
     cursor: pointer;
     outline: none;
+    float: center;
     font-family: 'Rajdhani', sans-serif;
   }
   
-  .sidenav a:hover, .dropdown-btn:hover {
+  .infoProdutos a:hover, .dropdown-btn:hover {
     color: #059344;
   }
   
@@ -140,7 +137,6 @@
   
   
   .dropdown-container {
-    display: none;
     background-color: #fff5f500;
     padding-left: 8px;
     font-size: 2px;
@@ -155,8 +151,8 @@
   }
   
   @media screen and (max-height: 768px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .infoProdutos {padding-top: 15px;}
+    .infoProdutos a {font-size: 18px;}
   }
   
   .hr3 {
@@ -164,7 +160,6 @@
     border: 0;
     border-top: 1px solid #059344;
     width: 100%;
-    position: relative;
     left: 50%;
     top: 40px;
   }
@@ -174,7 +169,6 @@
     border: 0;
     border-top: 1px solid #059344;
     width: 100%;
-    position: relative;
     left: 50%;
     top: -50px;
   }
@@ -184,7 +178,6 @@
     text-align: left;
     color: #000000;
     padding: 10px;
-    position: relative;
     left: 50%;
     top: -60px;
 
@@ -195,8 +188,7 @@
     text-align: left;
     color: #000000;
     padding: 10px;
-    position: relative;
-    left: 50%;
+
     top: -50px;
 
   }
@@ -205,7 +197,7 @@
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 20px 36px;
+    padding: 3%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -213,9 +205,8 @@
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    position: relative;
-    left: 50%;
-    top: 90px;
+    /* left: 50%; */
+    /* top: 90px; */
   }
 
   .button1 {
@@ -334,8 +325,7 @@ footer{
   .col-25 {
     -ms-flex: 25%; /* IE10 */
     flex: 25%;
-    position: relative;
-    width: 35%;
+    width: 100%;
     top: 160px;
     left: 50%;
   }
@@ -374,13 +364,11 @@ footer{
     padding: 13px 24px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    position: relative;
-    left: 42%;
+    /* left: 42%; */
     top: 7px;
     font-family: 'Rajdhani', sans-serif;
     border-radius: 10px;
@@ -392,12 +380,10 @@ footer{
     padding: 13px 24px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    position: relative;
     left: 42%;
     top: 7px;
     font-family: 'Rajdhani', sans-serif;
