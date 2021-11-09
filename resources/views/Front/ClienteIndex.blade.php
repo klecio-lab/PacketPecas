@@ -33,7 +33,7 @@
 
 <nav class="black" style="padding:0px 10px; position: fixed;">
 	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/logoBranca.png" alt="logo"> </a>
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/logoBranca.png') }}" alt="logo"> </a>
 
 		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
 			<i class="material-icons">menu</i>
@@ -57,7 +57,7 @@
 <!-- <script src="Fjs/main.js"></script>    -->
 
 <center>
-<div class="row center" style="background-image: url('Fimg/maquina3.png'); height:auto; width: 100%;">
+<div class="row center" style="background-image: url({{ asset('Fimg/maquina3.png') }}); height:auto; width: 100%;">
   <div class="col s12 m6 l6">
       <div style="">   
           <h2 style="float: left;text-align: left; margin-top: 170px;">

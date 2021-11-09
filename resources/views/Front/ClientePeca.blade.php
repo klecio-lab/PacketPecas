@@ -328,7 +328,7 @@
           {
             var containerProtudos = document.getElementById('carrinho');
                containerProtudos.innerHTML+=`
-               <span class="valor limitar" href="#">${pegarNomes[i]}</span><span class="price">R$${PRECO[i]}<button><i class="fa fa-trash" onclick="Excluir(${i})"></i></button></span><span style="float: center">${QUANTIDADE[i]}</span><br>
+               <span class="valor limitar" href="#">${pegarNomes[i]}</span><span class="price">R$${PRECO[i]}<button><i class="fa fa-trash" onclick="Excluir(${i})"></i></button></span><span style="float: center"><i class="tiny material-icons">forward</i>${QUANTIDADE[i]}</span><br>
                `;
             //console.log(pegarNomes[i]);
           }
