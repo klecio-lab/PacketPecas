@@ -6,29 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('Fcss/mainPeças.css') }}">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Document</title>
+    <title>Produto</title>
+
+        <!-- sidenav -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
-              .limitar {
+            .limitar {
             max-width: 5ch;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -36,9 +33,7 @@
             }
             .valores
             {
-              float: right;
               text-align: left;
-              padding-right: 35%;
             }
             .descricao
             {
@@ -52,86 +47,102 @@
             {
               max-width: 45ch;
             }
+            .espacoCima{
+              margin-top: 170px;
+              float: center;
+            }
   </style>
 
 </head>
 <body>
-    <header>
-        <nav>
-         <a href="index.html"> <img src="{{ asset('Fimg/LogoBranca.png') }}" alt="logo"> </a>
-          <div class="mobile-menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-          </div>
-          <ul class="nav-list">
-            <li><a href="{{ route('ClienteHome') }}">Início</a></li>
-            <li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
-            <li><a href="{{ route('contato') }}">Contato</a></li>
-            <li><a href="{{ route('login') }}">Entrar</a></li>
-          </ul>
-        </nav>
-      </header>
+<nav class="black" style="padding:0px 10px; position: fixed;">
+	<div class="nav-wrapper">
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/logoBranca.png') }}" alt="logo"> </a>
+
+		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
+			<i class="material-icons">menu</i>
+		</a>
+
+		<ul class="right hide-on-med-and-down "  >
+    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
+			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
+			<li><a href="{{ route('contato') }}">Contato</a></li>
+			<li><a href="{{ route('login') }}">Entrar</a></li>
+		</ul>
+	</div>
+</nav>
+
+<ul class="sidenav" id="mobile-nav">
+	    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
+			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
+			<li><a href="{{ route('contato') }}">Contato</a></li>
+			<li><a href="{{ route('login') }}">Entrar</a></li>
+</ul>
      
 @foreach($peca as $pecas)
-<div class="isso">
-          <img class="imgPeça" src="{{ asset($pecas['IMAGEM']) }}" width='400px' height='400px' alt="Produtos">
+<div class="row center">
+  <div class="col s12 m6 l6 espacoCima">
+    <img class="imgPeça" src="{{ asset($pecas['IMAGEM']) }}" width='400px' height='400px' alt="Produtos">
+  </div>
+    
+  <div class="col s12 m6 l6 espacoCima">
+    <div class="valores">
+      <h1 class="titulo"><span>{{ $pecas['NOME'] }}</span></h1>
+      <hr class="hr2">
+      
+      <p class="text-sub textos"><span>{{ $pecas['DESCRICAO'] }}</span></p>
 
-
-
-      <div class="valores">
-          <h1 class="titulo"><span>{{ $pecas['NOME'] }}</span></h1>
-          <hr class="hr2">
-          <p class="text-sub textos"><span>{{ $pecas['DESCRICAO'] }}</span> </p>
-
-          <div class="sidenav">
-            <button class="dropdown-btn textos">CODIGO DO PRODUTO: <br>
-            {{ $pecas['CODIGO'] }}
-              </button>
-          </div>
-          <div class="sidenav">
-            <button class="dropdown-btn textos">PRECO DO PRODUTO: <br>
-            R${{ $pecas['PRECO'] }}
-              </button>
-          </div>
-          <hr class="hr3">
-          <br>
+      <div class="text-sub infoProdutos">
+        <button class="dropdown-btn textos">CODIGO DO PRODUTO: <br>
+        {{ $pecas['CODIGO'] }}
+        </button>
       </div>
+
+      <div class="text-sub infoProdutos">
+        <button class="dropdown-btn textos">PRECO DO PRODUTO: <br>
+        R${{ $pecas['PRECO'] }}
+        </button>
       </div>
-      @endforeach
+
+      <hr class="hr3">
 
       {{-- PARTE DO CARRINHO DE COMPRAS --}}
-      <div id="refresh">
-      <button class="button button1" onclick="Salvar()" >ADICIONAR AO CARRINHO</button>
-      <button class="button button3">CONSULTOR DE VENDA</button>
 
+      <pre><button class="button button1" onclick="Salvar()" >ADICIONAR AO CARRINHO</button><button class="button button3">CONSULTOR DE VENDA</button></pre><br>
+
+      {{-- PARTE DO CARRINHO LISTA DE PRODUTOS --}}
+    <div id="refresh">
       <div class="col-25">
         <div class="container4">
-          <h4>Carrinho
-            <span class="price" style="color:rgb(0, 0, 0)">
-              <i class="fa fa-shopping-cart"></i>
-              <b id='totalpedido'></b>
-            </span>
-          </h4>
+            <h4>Carrinho
+              <span class="price" style="color:rgb(0, 0, 0)">
+                <i class="fa fa-shopping-cart"></i>
+                <b id='totalpedido'></b>
+              </span>
+            </h4>
 
-        <p id="carrinho">
+          <p id="carrinho">
+          </p>
 
-        </p>
+            <hr>
 
-          <hr>
-
-          <div id="valortotal">
-
-          </div>
-          
-          <a><button onclick="Enviar('testando')" class="buttonn button4"> Comprar </button></a>
-          <a><button class="limpar" onclick="limparCarrinho()"> Limpar </button></a>
+            <div id="valortotal">
+            </div>
+            
+            <a><button onclick="Enviar('testando')" class="buttonn button4"> Comprar </button></a>
+            <a><button class="limpar" onclick="limparCarrinho()"> Limpar </button></a>
         </div>
       </div>
     </div>
+
     </div>
 
+  </div>
+</div>
 
+      @endforeach
+
+    
 
       <footer>
         <div class="footer-content">
@@ -149,6 +160,12 @@
 
       <script src="{{ asset('Fjs/main.js') }}"></script> 
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <script>
+        $(document).ready(function(){
+          $('.sidenav').sidenav();
+        });
+      </script>
 
       <script>
         function Salvar()

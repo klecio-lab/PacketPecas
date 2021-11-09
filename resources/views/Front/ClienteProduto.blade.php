@@ -5,10 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('Fcss/mainProdutos.css') }}">
-    
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
@@ -19,6 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+    <!-- sidenav -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <style>
               .limitar {
@@ -33,46 +35,59 @@
             }
   </style>
 
-    <title>Document</title>
+    <title>Produtos</title>
 </head>
 <body>
-    <header>
-        <nav>
-         <a href="index.html"> <img src="Fimg/LogoBranca.png" alt="logo"> </a>
-          <div class="mobile-menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-          </div>
-          <ul class="nav-list menu">
-            <li><a href="{{ route('ClienteHome') }}">Início</a></li>
-            <li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
-            <li><a href="{{ route('contato') }}">Contato</a></li>
-            <li><a href="{{ route('login') }}">Entrar</a></li>
-          </ul>
-        </nav>
-      </header>
-      <script src="Fjs/main.js"></script>  
+<nav class="black" style="padding:0px 10px; position: fixed;">
+	<div class="nav-wrapper">
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/logoBranca.png" alt="logo"> </a>
+
+		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
+			<i class="material-icons">menu</i>
+		</a>
+
+		<ul class="right hide-on-med-and-down "  >
+    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
+			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
+			<li><a href="{{ route('contato') }}">Contato</a></li>
+			<li><a href="{{ route('login') }}">Entrar</a></li>
+		</ul>
+	</div>
+</nav>
+
+<ul class="sidenav" id="mobile-nav">
+	    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
+			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
+			<li><a href="{{ route('contato') }}">Contato</a></li>
+			<li><a href="{{ route('login') }}">Entrar</a></li>
+</ul>
+
+<script src="Fjs/main.js"></script>  
+
+<br><br>
 
 <div class="text-principal">
       <h2>Peças e Produtos</h2>
       <hr class="hr1">
 </div>
 
+<!-- filtro d e produtos -->
+<div class="container">
+    <form action="{{ route('search') }}" method="post">
+      @csrf
+      <input type="search" id="buscar" name="buscar" placeholder="Filtrar: ">
+      <button type='submit' class="btn black-effect black">Pesquisar</button>
+  </form>
+</div>
+
+
       <div id="produtos">
 
       </div>
 
-
-      <div class="sidenav">
-        <p>FILTROS</p>
-          <form action="{{ route('search') }}" method="post">
-          @csrf
-          <div class="form-outline">
-            <input type="search" id="buscar" name="buscar" class="form-control" />
-          </div>
-          <button type='submit' class="btn btn-primary">Pesquisar</button>
-          </form>
+        
+      <div class='center'>
+      {{ $produto->links('shared.paginacao') }}
         </div>
 
       <script>
@@ -144,5 +159,11 @@
 
 
 </body>
+
+<script>
+	$(document).ready(function(){
+ 		$('.sidenav').sidenav();
+ 	});
+</script>
 </html>
       

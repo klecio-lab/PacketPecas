@@ -147,13 +147,6 @@
 
   }
 
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-
   .column {
     float: left;
     width: 16.33%;
@@ -294,10 +287,10 @@
 
 div.gallery {
   margin: 10px;
-  float: left;
-  width: 30%;
-  position: relative;
-  left: 19%;
+  float: right;
+  width: 35%;
+  height: auto;
+  position: block;
   flex-wrap: wrap;
 }
 
@@ -326,15 +319,17 @@ div.desc:hover{
   color: white;
 }
 
-
-
-
 .black-title{
-  display: inline-block;
-  margin-left: 45.33333%;
+  margin: 0;
   font-family: 'Rajdhani', sans-serif;
-  padding: 8px;
   font-size: 28px;
+
+}
+
+.black-title2{
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 25px;
 }
 
 iframe{
@@ -350,12 +345,3 @@ iframe{
 }
 
 
-.black-title2{
-
-  display: inline-block;
-  margin-left: 37.33333%;
-  font-family: 'Rajdhani', sans-serif;
-  padding: 1px;
-  font-size: 25px;
-
-}
