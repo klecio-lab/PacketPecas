@@ -430,14 +430,14 @@
             }
         uri = `Pedidos\n———————\nLista de Produtos | Quantidade\n${novoTudo}\n———————\nValor:\n R$${soma};`
         const encoded = encodeURI(uri);
-        numero = "5581995247120"
+        numero = "558198995121"
         var edit = `https://api.whatsapp.com/send?phone=${numero}&text=${encoded} `
         location.href = edit
         }
 
         function consultor()
         {
-          var edit = `https://api.whatsapp.com/send?phone=5581995247120&text=preciso%20de%20ajuda`
+          var edit = `https://api.whatsapp.com/send?phone=558198995121&text=preciso%20de%20ajuda`
           location.href = edit
         }
       </script>
