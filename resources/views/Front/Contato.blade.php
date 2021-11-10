@@ -28,9 +28,9 @@
 </head>
 <body>
 
-<nav class="black" style="padding:0px 10px; position: fixed; z-index:9999;">
+<nav class="black" style="padding:0px 10px; position: fixed;>
 	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/logoBranca.png') }}" alt="logo"> </a>
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/LogoBranca.png" alt="logo"> </a>
 
 		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
 			<i class="material-icons">menu</i>
