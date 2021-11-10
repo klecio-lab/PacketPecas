@@ -55,9 +55,9 @@
 
 </head>
 <body>
-<nav class="black" style="padding:0px 10px; position: fixed;">
+<nav class="black" style="padding:0px 10px; position: fixed;  z-index:9999;">
 	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/logoBranca.png') }}" alt="logo"> </a>
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/LogoBranca.png" alt="logo"> </a>
 
 		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
 			<i class="material-icons">menu</i>
@@ -108,7 +108,7 @@
 
       {{-- PARTE DO CARRINHO DE COMPRAS --}}
 
-      <pre><button class="button button1" onclick="Salvar()" >ADICIONAR AO CARRINHO</button><button class="button button3">CONSULTOR DE VENDA</button></pre><br>
+      <pre><button class="button button1" onclick="Salvar()" >ADICIONAR AO CARRINHO</button><button class="button button3" onclick="consultor()">CONSULTOR DE VENDA</button></pre><br>
 
       {{-- PARTE DO CARRINHO LISTA DE PRODUTOS --}}
     <div id="refresh">
@@ -432,8 +432,13 @@
         const encoded = encodeURI(uri);
         numero = "5581995247120"
         var edit = `https://api.whatsapp.com/send?phone=${numero}&text=${encoded} `
-        console.log(edit)
-        location.href = editado
+        location.href = edit
+        }
+
+        function consultor()
+        {
+          var edit = `https://api.whatsapp.com/send?phone=5581995247120&text=preciso%20de%20ajuda`
+          location.href = edit
         }
       </script>
 </body>
