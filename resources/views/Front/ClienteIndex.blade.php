@@ -135,8 +135,8 @@
         </div>
 
         <div class="maps">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m6!1d2794.4347507222374!2d-34.82786795547711!3d-7.902640792605967!2m6!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m6!1m2!1s0x7ab3e51ab2c8073%3A0x928bfe5873f7c744!2sAv.%20Dr.%20Cl%C3%A1udio%20Jos%C3%A9%20Gueiros%20Leite%2C%206363%20-%20Pau%20Amarelo%2C%20Paulista%20-%20PE%2C%2053431-165!5e0!3m2!1spt-BR!2sbr!4v1626364415136!5m2!1spt-BR!2sbr" width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2794.4347507222374!2d-34.82786795547711!3d-7.902640792605967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab3e51ab2c8073%3A0x928bfe5873f7c744!2sAv.%20Dr.%20Cl%C3%A1udio%20Jos%C3%A9%20Gueiros%20Leite%2C%206363%20-%20Pau%20Amarelo%2C%20Paulista%20-%20PE%2C%2053431-165!5e0!3m2!1spt-BR!2sbr!4v1626364415136!5m2!1spt-BR!2sbr" width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+       </div>
 
       
        <footer>

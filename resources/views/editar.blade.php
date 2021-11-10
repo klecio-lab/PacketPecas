@@ -1,7 +1,3 @@
-<x-app-layout>
-    <x-slot name="header">
-    </x-slot>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +16,56 @@
       <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Pagina de  Edição de Produtos</title>
+
+                  <!-- sidenav -->
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
+<nav class="black" style="padding:0px 10px; position: fixed; z-index: 1111">
+	<div class="nav-wrapper">
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/logoBranca.png') }}" alt="logo"> </a>
+
+		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
+			<i class="material-icons">menu</i>
+		</a>
+
+		<ul class="right hide-on-med-and-down "  >
+    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
+			<li><a href="{{ route('Products') }}">Produtos</a></li>
+			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
+      <li><a href="{{ route('Geral') }}">Geral</a></li>
+      <li><form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <a href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                      this.closest('form').submit();">
+          {{ __('Sair') }}
+    </a>
+  </form></li>
+		</ul>
+	</div>
+</nav>
+
+<ul class="sidenav" id="mobile-nav"  style="z-index: 1112;">
+      <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
+			<li><a href="{{ route('Products') }}">Produtos</a></li>
+			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
+      <li><a href="{{ route('Geral') }}">Geral</a></li>
+      <li><form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                  this.closest('form').submit();">
+      {{ __('Sair') }}
+      </a>
+      </form></li>
+</ul>
 
     <center>
     <img src="{{ asset('logot.svg') }}"  alt="não carreguei">
@@ -101,6 +144,14 @@
         
 </body>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+          $(document).ready(function(){
+            $('.sidenav').sidenav();
+          });
+        </script>
+
 <script>
     function myFunction(id) {
         Swal.fire
@@ -112,4 +163,3 @@
         }
 </script>
 </html>
-</x-app-layout>
