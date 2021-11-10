@@ -55,7 +55,7 @@
 
 </head>
 <body>
-<nav class="black" style="padding:0px 10px; position: fixed;  z-index:9999;">
+<nav class="black" style="padding:0px 10px; position: fixed;  z-index:1111;">
 	<div class="nav-wrapper">
     <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/LogoBranca.png') }}" alt="logo"> </a>
 
@@ -72,7 +72,7 @@
 	</div>
 </nav>
 
-<ul class="sidenav" id="mobile-nav">
+<ul class="sidenav" id="mobile-nav"  style="z-index:1112;">
 	    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
 			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
 			<li><a href="{{ route('contato') }}">Contato</a></li>
