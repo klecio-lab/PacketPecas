@@ -1,23 +1,22 @@
-<x-app-layout>
-    <x-slot name="header">
-    </x-slot>
-    <br>
-    <br>
-
-        <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script type = "text/javascript"
+src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
-      <script type = "text/javascript"
-         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<!-- sidenav -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -46,7 +45,48 @@
 </head>
 <body>
 
+<nav class="black" style="padding:0px 10px; position: fixed; z-index: 1111;">
+	<div class="nav-wrapper">
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/logoBranca.png') }}" alt="logo"> </a>
 
+		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
+			<i class="material-icons">menu</i>
+		</a>
+
+		<ul class="right hide-on-med-and-down "  >
+    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
+			<li><a href="{{ route('Products') }}">Produtos</a></li>
+			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
+      <li><a href="{{ route('Geral') }}">Geral</a></li>
+      <li><form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <a href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                      this.closest('form').submit();">
+          {{ __('Sair') }}
+    </a>
+  </form></li>
+		</ul>
+	</div>
+</nav>
+
+<ul class="sidenav" id="mobile-nav">
+      <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
+			<li><a href="{{ route('Products') }}">Produtos</a></li>
+			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
+      <li><a href="{{ route('Geral') }}">Geral</a></li>
+      <li><form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                  this.closest('form').submit();">
+      {{ __('Sair') }}
+      </a>
+      </form></li>
+</ul>
+<br><br><br><br>
     <center>
     <img src="{{ asset('logot.svg') }}"  alt="">
     <div class="row container center">
@@ -183,6 +223,11 @@
 )
 }
 </script>
+
+<script>
+          $(document).ready(function(){
+            $('.sidenav').sidenav();
+          });
+        </script>
+
 </html>
- 
-</x-app-layout>

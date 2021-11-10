@@ -14,10 +14,10 @@
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
             <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>            
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> -->
             <style>
               .rodape{
                 position: absolute;
@@ -34,7 +34,7 @@
           </head>
         <body>
 
-<nav class="black" style="padding:0px 10px; position: fixed;">
+<nav class="black" style="padding:0px 10px; position: fixed; z-index: 1111;">
 	<div class="nav-wrapper">
     <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/logoBranca.png') }}" alt="logo"> </a>
 
@@ -43,20 +43,42 @@
 		</a>
 
 		<ul class="right hide-on-med-and-down "  >
-    <li><a href="{{ route('AddProd') }}">Início</a></li>
+    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
 			<li><a href="{{ route('Products') }}">Produtos</a></li>
-			<li><a href="{{ route('contato') }}">Contato</a></li>
-			<li><a href="{{ route('login') }}">Entrar</a></li>
+			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
+      <li><a href="{{ route('Geral') }}">Geral</a></li>
+      <li><form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <a href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                      this.closest('form').submit();">
+          {{ __('Sair') }}
+    </a>
+  </form></li>
 		</ul>
 	</div>
 </nav>
 
-<ul class="sidenav" id="mobile-nav">
-	    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
-			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
-			<li><a href="{{ route('contato') }}">Contato</a></li>
-			<li><a href="{{ route('login') }}">Entrar</a></li>
+<ul class="sidenav" id="mobile-nav"  style="z-index: 1112;">
+      <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
+			<li><a href="{{ route('Products') }}">Produtos</a></li>
+			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
+      <li><a href="{{ route('Geral') }}">Geral</a></li>
+      <li><form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                  this.closest('form').submit();">
+      {{ __('Sair') }}
+      </a>
+      </form></li>
 </ul>
+
+
+
+<!-- <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Sair</a> -->
 
         <!-- <h1 align="center" >Dashboard</h1> -->
 {{--
@@ -111,52 +133,6 @@
             $('.sidenav').sidenav();
           });
         </script>
-
-<script type="text/javascript">
-		var chr=document.getElementById("myChart").getContext("2d");
-		var chr2=document.getElementById("myChart2").getContext("2d");
-		var myChart=new Chart(chr,{
-			type:'bar',
-			data:{
-				labels:['january','febuary','march','april','mei','juni','juli'],
-				datasets:[{
-					label:'Data Visitor',
-					data:[1100,1250,1090,1400,1150,1450,1107],
-					backgroundColor:'rgba(0,0,0,0)',
-					borderColor:'#fff',
-					borderWidth:1,
-				}]
-			},
-			options:{
-				legend:{
-					labels:{
-						fontColor:'#fff',
-					}
-
-				}
-			}
-		});
-		var myChart2=new Chart(chr2,{
-			type:'line',
-			data:{
-				labels:['Monday','Tuesday','Wednesday','Thursday','fiday'],
-				datasets:[{
-					label:'Data Users',
-					data:[100,512,150,120,190],
-					backgroundColor:'rgba(0,0,0,0)',
-					borderColor:'#fff',
-					borderWidth:1,
-				}]
-			},
-			options:{
-				legend:{
-					labels:{
-						fontColor:'#fff',
-					}
-				}
-			}
-		});
-	</script>
 
 
     </html>

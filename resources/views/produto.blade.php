@@ -1,10 +1,4 @@
-<x-app-layout>
-    <x-slot name="header">
-    </x-slot>
-    <br>
-    <br>
-    
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,12 +23,63 @@
             }
       </style>
 
+      <!-- sidenav -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <title>Pagina de Produtos</title>
 </head>
 <body>
 
+<nav class="black" style="padding:0px 10px; position: fixed; z-index: 1111;">
+	<div class="nav-wrapper">
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/logoBranca.png') }}" alt="logo"> </a>
 
-      <br>
+		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
+			<i class="material-icons">menu</i>
+		</a>
+
+		<ul class="right hide-on-med-and-down "  >
+    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
+			<li><a href="{{ route('Products') }}">Produtos</a></li>
+			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
+      <li><a href="{{ route('Geral') }}">Geral</a></li>
+      <li><form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <a href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                      this.closest('form').submit();">
+          {{ __('Sair') }}
+    </a>
+  </form></li>
+		</ul>
+	</div>
+</nav>
+
+<ul class="sidenav" id="mobile-nav"  style="z-index: 1112;">
+      <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
+			<li><a href="{{ route('Products') }}">Produtos</a></li>
+			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
+      <li><a href="{{ route('Geral') }}">Geral</a></li>
+      <li><form method="POST" action="{{ route('logout') }}">
+      @csrf
+      <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                  this.closest('form').submit();">
+      {{ __('Sair') }}
+      </a>
+      </form></li>
+</ul>
+
+<br><br><br> <br>
+<center>
+<img src="logot.svg" alt="">
+</center>
+<br>
 <div class="container">
 
 <form action="{{ route('product.search') }}" method="post">
@@ -48,7 +93,7 @@
     <div class="row">
     @if(isset($busca))
       @foreach($busca as $filtro)
-          <div class="col s4 16">
+        <div class="col s12 m4 l4">
               <div class="card">
                   <div class="card-image waves-effect waves-block waves-light">
                       <img class="activator" style='width: 240px; height: 240px;' src="{{ asset($filtro['IMAGEM']) }}" alt='não funciona' />
@@ -74,7 +119,7 @@
 
     @else
        @foreach($produtover as $produto)
-        <div class="col s4 16">
+       <div class="col s12 m4 l4">
             <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
                     <img class="activator" style='width: 240px; height: 240px;' src="{{ $produto['IMAGEM'] }}" alt='não funciona' />
@@ -129,5 +174,11 @@
           </div>
         </footer>
 
+        <script>
+          $(document).ready(function(){
+            $('.sidenav').sidenav();
+          });
+        </script>
+
+
 </html>
-</x-app-layout>
