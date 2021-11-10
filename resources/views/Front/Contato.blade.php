@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<nav class="black" style="padding:0px 10px; position: fixed;>
+<nav class="black" style="padding:0px 10px; position: fixed;  z-index:9999;">
 	<div class="nav-wrapper">
     <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/LogoBranca.png" alt="logo"> </a>
 
@@ -75,7 +75,7 @@
 
         <div class="input-field col s12">
             <textarea id="textarea1" class="materialize-textarea" required ></textarea>
-            <label for="textarea1">Textarea</label>
+            <label for="textarea1">Mensagem</label>
         </div>
 
     </form>
@@ -112,10 +112,9 @@
 
         uri = `Contato \n———————\n Nome:${nome} \n Email: ${email} \n Mensagem: ${mensagem};`
         const encoded = encodeURI(uri);
-        numero = "5581995247120"
+        numero = "558198995121"
         var edit = `https://api.whatsapp.com/send?phone=${numero}&text=${encoded} `
         location.href = edit
-
     }
 </script>
 
