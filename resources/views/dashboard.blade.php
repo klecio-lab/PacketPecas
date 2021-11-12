@@ -82,52 +82,44 @@
 <h1 align="center" >Dashboard</h1>
 
 <div class="row container">
-      
-        <!-- <pre>    </pre> -->
-      <div class="col s12 m6 l6">
-        <div class="card text-white bg-success mb-12">
-          <div class="card-header">Quantidade de Pedidos</div>
-            <div class="card-body">
-              <h5 class="card-title">{{ $QuantidadePedidos }}<i class="material-icons medium" style="float: right;">insert_chart</i></h5>
-              <p class="card-text">Total de Pedidos</p>
-            </div>
+  <div class="col s12 m6 l6">
+      <div class="card text-white bg-success mb-12">
+        <div class="card-header">Quantidade de Pedidos</div>
+          <div class="card-body">
+            <h5 class="card-title">{{ $QuantidadePedidos }}<i class="material-icons medium" style="float: right;">insert_chart</i></h5>
+            <p class="card-text">Total de Pedidos</p>
           </div>
         </div>
-        <div class="col s12 m6 l6">
-        <div class="card text-white bg-dark mb-12">
+     </div>
+    <div class="col s12 m6 l6">
+      <div class="card text-white bg-dark mb-12">
       <div class="card-header">Quantidade de Produtos</div>
-        <div class="card-body">
-          <h5 class="card-title">{{ $QuantidadeProdutos }} <i class="material-icons medium" style="float: right;">tune</i></h5>
-          <p class="card-text">Total de Produtos </p>   
-      </div>
-      </div>
-  <!-- <pre>    </pre> -->
-  <div class="col s12 m6 l6">
- 
-        
-      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ $QuantidadeProdutos }} <i class="material-icons medium" style="float: right;">tune</i></h5>
+        <p class="card-text">Total de Produtos </p>   
+    </div>
   </div>
-</div>
-<br><br><br>
-<br>
+  </div>
+  </div>
 
-                    <!-- <pre>    </pre> -->
 
-    <footer class="page-footer center black rodape">
-          <div class="container center">
-            <div class="row">
-              <div class="col l12 s12 ">
-                <h5 class="white-text">PacketPeças</h5>
-                <p class="grey-text text-lighten-4">O sucesso é a soma de pequenos esforços do dia a dia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2020 PacketPeças
-            </div>
-          </div>
-        </footer>
+<br><br><br><br>
+
+<footer class="page-footer center black rodape">
+    <div class="container center">
+      <div class="row">
+        <div class="col l12 s12 ">
+          <h5 class="white-text">PacketPeças</h5>
+          <p class="grey-text text-lighten-4">O sucesso é a soma de pequenos esforços do dia a dia.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2020 PacketPeças
+      </div>
+    </div>
+  </footer>
 
         </body>
 

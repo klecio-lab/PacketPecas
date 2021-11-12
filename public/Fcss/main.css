@@ -15,7 +15,7 @@
   }
   
   a:hover {
-    color: #000000;
+    color: #059344;
   }
   
   .logo {
@@ -196,7 +196,17 @@
     font-family: 'Rajdhani', sans-serif;
   }
 
+  .button4{
+    background-color: white; 
+    color: green; 
+    border: 2px solid black;
+  } 
   
+.button4:hover {
+  background-color: #059344;
+  color: white;
+}
+
   .button1 {
     background-color: #059344; 
     color: rgb(255, 255, 255); 
@@ -204,7 +214,7 @@
   }
   
   .button1:hover {
-    background-color: rgb(10, 10, 10);
+    background-color: #059344;
     color: white;
   }
   
@@ -316,7 +326,9 @@ div.desc {
 }
 
 div.desc:hover{
-  color: white;
+  background-color: #059344;
+  width: 80%;
+  margin-left: 10%;
 }
 
 .black-title{

@@ -43,6 +43,7 @@
     <li><a href="{{ route('ClienteHome') }}">Início</a></li>
 			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
 			<li><a href="{{ route('contato') }}">Contato</a></li>
+      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
 			<li><a href="{{ route('login') }}">Entrar</a></li>
 		</ul>
 	</div>
@@ -52,6 +53,7 @@
 	    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
 			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
 			<li><a href="{{ route('contato') }}">Contato</a></li>
+      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
 			<li><a href="{{ route('login') }}">Entrar</a></li>
 </ul>
 <!-- <script src="Fjs/main.js"></script>    -->
@@ -75,6 +77,7 @@
   </div>
 
 </div>
+
 </center>
           <br><br>
       <div class="row center">
@@ -106,6 +109,20 @@
        </div>
        <hr>
 
+       <h1 align="center">Nossos Segmetos</h1>
+        <div class="carousel">
+            <br>
+            <button><a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/TeflonAdesivo.jpg"><p align="center">Teflon Adesivo</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/Transformador.jpg"><p align="center">Transformador</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/FitaDeDatador.jfif"><p align="center">Fita de Datador</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/AcopladorRele.jpg"><p align="center">Acoplador a Rele</p></a></button>
+      </div>
+    
+    <center>
+      <button class="prev btn black"><i class="material-icons">navigate_before</i> </button>
+      <button class="next btn black"><i class="material-icons">navigate_next</i> </button>
+      </center>
+
        
        <!-- parte do serviçosa -->
        <br>
@@ -124,13 +141,13 @@
             <div class="col s12 m6 l6">
                 <a href="{{ route('ClienteProduto') }}">
                 <img class="peças-1" src="Fimg/peças.png" alt="Peças" width="500" height="300">
-                <div class="desc">Peças de reposição</div></a>
+                <div class="button button4 ">Peças de reposição</div></a>
             </div>
 
             <div class="col s12 m6 l6">
-              <a href="https://api.whatsapp.com/send?phone=5581995247120&text=estou%20testando%20a%20api%20de%20enviar%20mensagem%20via%20whatzap%20">
+              <a href="https://api.whatsapp.com/send?phone=5581998995121&text=estou%20testando%20a%20api%20de%20enviar%20mensagem%20via%20whatzap%20">
               <img  class="peças-1" src="Fimg/homemTrabalhando.png" alt="Trabalho" width="500" height="300">
-              <div class="desc">Serviços para manutenção</div></a>
+              <div class="button button4">Serviços para manutenção</div></a>
             </div>
         </div>
 
@@ -158,5 +175,19 @@
 	$(document).ready(function(){
  		$('.sidenav').sidenav();
  	});
+</script>
+<script>
+      $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+
+  $('.prev').click(function(){
+      $(".carousel").carousel("prev");
+  })
+
+  $('.next').click(function(){
+      $(".carousel").carousel("next");
+  })
+
 </script>
 </html>

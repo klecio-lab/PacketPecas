@@ -24,6 +24,7 @@ Route::get('ClienteProduto', [ClienteController::class, 'ClienteProduto'])->name
 Route::get('ClienteProduto/{id}', [ClienteController::class, 'SubPagina'])->name('Subpagina');
 Route::any('pesquisar', [ClienteController::class, 'PesquisarProd'])->name('search');
 Route::get('contato', [ClienteController::class, 'contato'])->name('contato');
+Route::get('sobre', [ClienteController::class, 'sobre'])->name('sobre');
 
 
 //Rota de vizualização e adição de produtos
