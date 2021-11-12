@@ -67,7 +67,7 @@ seja itens: PNEUMÁTICOS, ELÉTRICOS, MECÂNICOS e INSUMOS.
 Tudo isso para minimizar seus custos operacionais, reduzir tempo de máquinas paradas e garantir o máximo de desempenho da sua produção.</p>
           </div>
           <div class="col s12 m6 l6" style="margin-top:100px" >
-          <img src="Fimg/logogrande.png" alt="" width="200px" height="200px">
+          <img src="Fimg/logoGrande.png" alt="" width="200px" height="200px">
           </div>
     </div>
 
