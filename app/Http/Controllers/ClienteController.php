@@ -30,4 +30,9 @@ class ClienteController extends Controller
         $produto = cadastroproduto::where('CODIGO', $data['buscar'])->paginate(4)->withQueryString();
         return view('Front.ClienteProduto', compact('produto'));
     }
+
+    public function sobre()
+    {
+        return view("Front.Sobre");
+    }
 }

@@ -40,65 +40,44 @@
     <li><a href="{{ route('ClienteHome') }}">Início</a></li>
 			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
 			<li><a href="{{ route('contato') }}">Contato</a></li>
-      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
+            <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
 			<li><a href="{{ route('login') }}">Entrar</a></li>
 		</ul>
 	</div>
 </nav>
 
 <ul class="sidenav" id="mobile-nav"  style="z-index:1112;">
-	    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
+	        <li><a href="{{ route('ClienteHome') }}">Início</a></li>
 			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
 			<li><a href="{{ route('contato') }}">Contato</a></li>
-      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
+            <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
 			<li><a href="{{ route('login') }}">Entrar</a></li>
 </ul>
 
-      <!-- <script src="Fjs/main.js"></script>    -->
-
     <br><br><br>
-      <h1 align="center">Pagina de Contato</h1>
-    <center>
-      
-<div class="row container">
-    <form class="col s12">
-
-        <div class="input-field col s6">
-            <input  id="first_name" type="text" class="validate" required>
-            <label for="first_name">Seu Nome</label>
-        </div>
 
 
-        <div class="input-field col s6">
-          <input id="email" type="email" class="validate" required>
-          <label for="email">Email</label>
-        </div>
+      <br><br>
+
+    <div class="row container center">    
+          <div class="col s12 m6 l6">
+          <h1 align="center">Nossa Empresa</h1>
+          <p style="">Oferencendo total suporte aos clientes, a Packet Peças e Serviços, é uma empresa autorizada Indumak, localizado no estado de Pernambuco, onde atende toda região do Nordeste, a nossa empresa está estrategicamente posicionada para facilitar os processos de distribuição de peças, com o estoque repleto de peças para reposição, dispomos no nosso estoque, tudo que vocês precisam.
+seja itens: PNEUMÁTICOS, ELÉTRICOS, MECÂNICOS e INSUMOS. 
+Tudo isso para minimizar seus custos operacionais, reduzir tempo de máquinas paradas e garantir o máximo de desempenho da sua produção.</p>
+          </div>
+          <div class="col s12 m6 l6" style="margin-top:100px" >
+          <img src="Fimg/logogrande.png" alt="" width="200px" height="200px">
+          </div>
+    </div>
 
 
-        <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea" required ></textarea>
-            <label for="textarea1">Mensagem</label>
-        </div>
-
-    </form>
-</div>
-</center>
-
-<center>
-<button class="btn waves-effect black" type="" onclick="Enviar()" name="action">Submit
-                <i class="material-icons right">send</i>
-        </button>
-        </center>
   <footer>
         <div class="footer-content">
           <img src="{{ asset('Fimg/LogoFooter.png') }}" alt="logo">
             <p class="footer-h2">Facilidade e segurança para tornar seu processo mais eficiente, conte com a confiança desta parceria.</p>
             <ul class="socials">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="https://www.instagram.com/packetpecas/"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
             </ul>
         </div>
       </footer>
@@ -118,6 +97,21 @@
         var edit = `https://api.whatsapp.com/send?phone=${numero}&text=${encoded} `
         location.href = edit
     }
+</script>
+
+<script>
+      $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+
+  $('.prev').click(function(){
+      $(".carousel").carousel("prev");
+  })
+
+  $('.next').click(function(){
+      $(".carousel").carousel("next");
+  })
+
 </script>
 
 <script>
