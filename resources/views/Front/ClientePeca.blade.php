@@ -63,10 +63,11 @@
 			<i class="material-icons">menu</i>
 		</a>
 
-		<ul class="right hide-on-med-and-down "  >
+		<ul class="right hide-on-med-and-down "  style="z-index:1112;">
     <li><a href="{{ route('ClienteHome') }}">Início</a></li>
 			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
 			<li><a href="{{ route('contato') }}">Contato</a></li>
+      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
 			<li><a href="{{ route('login') }}">Entrar</a></li>
 		</ul>
 	</div>
@@ -76,6 +77,7 @@
 	    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
 			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
 			<li><a href="{{ route('contato') }}">Contato</a></li>
+      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
 			<li><a href="{{ route('login') }}">Entrar</a></li>
 </ul>
      
