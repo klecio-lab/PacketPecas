@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
 
+    <link rel="shortcut icon" href="Fimg/logoGrande.png" />
+    
     <!-- sidenav -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
@@ -35,18 +37,33 @@
             }
   </style>
 
+<style>
+  nav a{
+    color: black !important;
+    font-size: 25px  !important;
+    
+  }
+  .nav-wrapper{
+    height: 50px !important;
+    margin-top: 2% !important;
+  }
+  nav a:hover{
+    color: green !important;
+  }
+</style>
+
     <title>Produtos</title>
 </head>
 <body>
-<nav class="black" style="padding:0px 10px; position: fixed;  z-index:1111;">
+<nav class="white" style="padding:0px 10px; position: fixed;  z-index:1111;  height: 15% !important;">
 	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/LogoBranca.png" alt="logo"> </a>
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/Logot.png" alt="logo"> </a>
 
 		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
 			<i class="material-icons">menu</i>
 		</a>
 
-		<ul class="right hide-on-med-and-down "   style="z-index:1112;" >
+		<ul class="right hide-on-med-and-down" >
     <li><a href="{{ route('ClienteHome') }}">Início</a></li>
 			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
 			<li><a href="{{ route('contato') }}">Contato</a></li>
@@ -66,7 +83,7 @@
 
 <script src="Fjs/main.js"></script>  
 
-<br><br>
+<br><br><br><br>
 
 <div class="text-principal">
       <h2>Peças e Produtos</h2>

@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Fcss/main.css">
 
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
+<link rel="shortcut icon" href="Fimg/logoGrande.png" />
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
@@ -31,11 +32,12 @@
 <style>
   nav a{
     color: black !important;
-    font-size: 20px  !important;
+    font-size: 25px  !important;
     
   }
   .nav-wrapper{
     height: 50px !important;
+    margin-top: 2% !important;
   }
   nav a:hover{
     color: green !important;
@@ -45,7 +47,7 @@
 </head>
 <body>
 
-<nav class="white" style="padding:0px 20px; position: fixed; z-index:1111;">
+<nav class="white" style="padding:0px 20px; position: fixed; z-index:1111; height: 15% !important;">
 	<div class="nav-wrapper">
     <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/Logot.png" alt="logo"> </a>
 
