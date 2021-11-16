@@ -18,6 +18,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Produto</title>
 
+    <link rel="shortcut icon" href="Fimg/logoGrande.png" />
+
         <!-- sidenav -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
@@ -53,11 +55,26 @@
             }
   </style>
 
+<style>
+  nav a{
+    color: black !important;
+    font-size: 25px  !important;
+    
+  }
+  .nav-wrapper{
+    height: 50px !important;
+    margin-top: 2% !important;
+  }
+  nav a:hover{
+    color: green !important;
+  }
+</style>
+
 </head>
 <body>
-<nav class="black" style="padding:0px 10px; position: fixed;  z-index:1111;">
+<nav class="white" style="padding:0px 10px; position: fixed;  z-index:1111;  height: 15% !important;">
 	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/LogoBranca.png') }}" alt="logo"> </a>
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/Logot.png') }}" alt="logo"> </a>
 
 		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
 			<i class="material-icons">menu</i>
