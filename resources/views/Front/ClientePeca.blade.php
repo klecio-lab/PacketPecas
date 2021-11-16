@@ -74,7 +74,7 @@
 <body>
 <nav class="white" style="padding:0px 10px; position: fixed;  z-index:1111;  height: 15% !important;">
 	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/Logot.png') }}" alt="logo"> </a>
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/logot.png') }}" alt="logo"> </a>
 
 		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
 			<i class="material-icons">menu</i>
@@ -347,7 +347,7 @@
           {
             var containerProtudos = document.getElementById('carrinho');
                containerProtudos.innerHTML+=`
-               <span class="valor limitar" href="#">${pegarNomes[i]}</span><span class="price">R$${PRECO[i]}<button><i class="fa fa-trash" onclick="Excluir(${i})"></i></button></span><span style="float: center"><i class="tiny material-icons">forward</i>${QUANTIDADE[i]}</span><br>
+               <span class="valor limitar" href="#">${pegarNomes[i]}</span><span class="price">R$${PRECO[i]}<button style="float: right"><i class="fa fa-trash" onclick="Excluir(${i})"></i></button></span><span style="float: center"><i class="tiny material-icons">forward</i>${QUANTIDADE[i]}</span><br>
                `;
             //console.log(pegarNomes[i]);
           }
