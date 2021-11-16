@@ -28,23 +28,38 @@
 
 <title>PacketPecas</title>
 
+<style>
+  nav a{
+    color: black !important;
+    font-size: 20px  !important;
+    
+  }
+  .nav-wrapper{
+    height: 50px !important;
+  }
+  nav a:hover{
+    color: green !important;
+  }
+</style>
+
 </head>
 <body>
 
-<nav class="black" style="padding:0px 10px; position: fixed; z-index:1111;">
+<nav class="white" style="padding:0px 20px; position: fixed; z-index:1111;">
 	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/LogoBranca.png" alt="logo"> </a>
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/Logot.png" alt="logo"> </a>
 
 		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
 			<i class="material-icons">menu</i>
 		</a>
 
-		<ul class="right hide-on-med-and-down "  >
+		<ul class="right hide-on-med-and-down"  >
     <li><a href="{{ route('ClienteHome') }}">Início</a></li>
 			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
 			<li><a href="{{ route('contato') }}">Contato</a></li>
       <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
 			<li><a href="{{ route('login') }}">Entrar</a></li>
+      <li><a href="https://www.instagram.com/packetpecas/"><i class="fa fa-instagram"></i></a></li>
 		</ul>
 	</div>
 </nav>
@@ -55,6 +70,7 @@
 			<li><a href="{{ route('contato') }}">Contato</a></li>
       <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
 			<li><a href="{{ route('login') }}">Entrar</a></li>
+      <li><a href="https://www.instagram.com/packetpecas/"><i class="fa fa-instagram"></i></a></li>
 </ul>
 <!-- <script src="Fjs/main.js"></script>    -->
 
@@ -163,9 +179,6 @@
             <ul class="socials">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="https://www.instagram.com/packetpecas/"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
             </ul>
         </div>
     </footer>
