@@ -208,7 +208,7 @@ src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2020 PacketPeças
+            © 2021 PacketPeças
             </div>
           </div>
         </footer>

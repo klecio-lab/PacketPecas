@@ -168,11 +168,7 @@
           <img src="{{ asset('Fimg/LogoFooter.png') }}" alt="logo">
             <p class="footer-h2">Facilidade e segurança para tornar seu processo mais eficiente, conte com a confiança desta parceria.</p>
             <ul class="socials">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="https://www.instagram.com/packetpecas/"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
             </ul>
         </div>
       </footer>

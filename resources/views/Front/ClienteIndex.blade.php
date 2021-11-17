@@ -47,7 +47,7 @@
 </head>
 <body>
 
-<nav class="white" style="padding:0px 20px; position: fixed; z-index:1111; height: 15% !important;">
+<nav class="white" style="padding:0px 20px; position: fixed; z-index:1111; height: 15% !important; width: 100% !important;">
 	<div class="nav-wrapper">
     <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/logot.png" alt="logo"> </a>
 
@@ -179,7 +179,6 @@
           <img src="Fimg/LogoFooter.png" alt="logo">
             <p class="footer-h2">Facilidade e segurança para tornar seu processo mais eficiente, conte com a confiança desta parceria.</p>
             <ul class="socials">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="https://www.instagram.com/packetpecas/"><i class="fa fa-instagram"></i></a></li>
             </ul>
         </div>
