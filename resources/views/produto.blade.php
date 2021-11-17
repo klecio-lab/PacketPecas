@@ -169,7 +169,7 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2020 PacketPeças
+            © 2021 PacketPeças
             </div>
           </div>
         </footer>
