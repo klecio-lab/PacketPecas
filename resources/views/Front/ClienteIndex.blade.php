@@ -82,7 +82,7 @@
       <div style="">   
           <h2 style="float: left;text-align: left; margin-top: 170px;">
           <p style="font-size: 22px"><b>
-          Somos a <span>Packet Peças</span>, uma loja autorizada <span>INDUMAK.</span>
+          Somos a <span style="color: white">Packet Peças</span>, uma loja autorizada <span style="color: white">INDUMAK.</span>
           Facilidade e segurança para tornar seu processo mais
           eficiente, conte com a confiança desta parceria.
           <pre><a href="{{ route('ClienteProduto') }}"><button class="button button1">Produtos</button></a><a href="#"><button class="button button2">Fale Conosco</button></a></pre></p></h2>
@@ -130,10 +130,18 @@
        <h1 align="center">Nossos Segmetos</h1>
         <div class="carousel">
             <br>
-            <button><a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/TeflonAdesivo.jpg"><p align="center">Teflon Adesivo</p></a>
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/Transformador.jpg"><p align="center">Transformador</p></a>
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/FitaDeDatador.jfif"><p align="center">Fita de Datador</p></a>
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/AcopladorRele.jpg"><p align="center">Acoplador a Rele</p></a></button>
+          <button>
+
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/TeflonAdesivo.jpg" width="300px" height="200px"><p align="center">Teflon Adesivo</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/FitaDeDatador.jfif" width="300px" height="200px"><p align="center">Fita de Datador</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/AcopladorRele.jpg" width="300px" height="200px"><p align="center">COMPONENTES ELÉTRICOS</p></a> 
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/CILINDRO FESTO.jpg" width="300px" height="200px"><p align="center">CILINDRO FESTO</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/cilindro SMC.jpg" width="300px" height="200px"><p align="center">cilindro SMC</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/CORREIAS.jpg" width="300px" height="200px"><p align="center">CORREIAS</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/INSUMOS.jpg" width="300px" height="200px"><p align="center">INSUMOS</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/MECANICO.jpg" width="300px" height="200px"><p align="center">MECANICO</p></a>
+          
+          </button>
       </div>
     
     <center>
