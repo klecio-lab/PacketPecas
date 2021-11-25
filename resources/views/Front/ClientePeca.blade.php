@@ -332,18 +332,22 @@
           var QUANTIDADE = QUANTIDADE.filter(function (i) {
             return i;
           });
+
+          var quantidadePreco = []
           
           //FAZENDO A SOMA DOS VALORES
           var soma = 0;
           for(var i = 0; i < PRECO.length; i++) {
-              soma += PRECO[i];
+              soma += PRECO[i] * QUANTIDADE[i];
+              adicionar = PRECO[i] * QUANTIDADE[i];
+              quantidadePreco.push(adicionar);
           }
 
           for(var i = 0; i < pegarNomes.length; i++)
           {
             var containerProtudos = document.getElementById('carrinho');
                containerProtudos.innerHTML+=`
-               <span class="valor limitar" href="#">${pegarNomes[i]}</span><span class="price">R$${PRECO[i]}<button style="float: right"><i class="fa fa-trash" onclick="Excluir(${i})"></i></button></span><span style="float: center"><i class="tiny material-icons">forward</i>${QUANTIDADE[i]}</span><br>
+               <span class="valor limitar" href="#">${pegarNomes[i]}</span><span class="price">R$${quantidadePreco[i]}<button style="float: right"><i class="fa fa-trash" onclick="Excluir(${i})"></i></button></span><span style="float: center"><i class="tiny material-icons">forward</i>${QUANTIDADE[i]}</span><br>
                `;
             //console.log(pegarNomes[i]);
           }
