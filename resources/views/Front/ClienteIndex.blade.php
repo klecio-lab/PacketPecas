@@ -132,8 +132,8 @@
             <br>
           <button>
 
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/TeflonAdesivo.jpg" width="300px" height="200px"><p align="center">Teflon Adesivo</p></a>
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/FitaDeDatador.jfif" width="300px" height="200px"><p align="center">Fita de Datador</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/TeflonAdesivo.jpg" width="300px" height="200px"><p align="center">TEFLON ADESIVO</p></a>
+            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/FitaDeDatador.jfif" width="300px" height="200px"><p align="center">FITA DE DATADOR</p></a>
             <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/AcopladorRele.jpg" width="300px" height="200px"><p align="center">COMPONENTES ELÉTRICOS</p></a> 
             <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/CILINDRO FESTO.jpg" width="300px" height="200px"><p align="center">LINHA DE PNEUMÁTICOS FESTO</p></a>
             <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/cilindro SMC.jpg" width="300px" height="200px"><p align="center">LINHA DE PNEUMÁTICOS SMC</p></a>
@@ -186,10 +186,13 @@
         <div class="footer-content">
           <img src="Fimg/LogoFooter.png" alt="logo">
             <p class="footer-h2">Facilidade e segurança para tornar seu processo mais eficiente, conte com a confiança desta parceria.</p>
-            <ul class="socials">
-                <li><a href="https://www.instagram.com/packetpecas/"><i class="fa fa-instagram"></i></a></li>
+            <ul style="color: white; font-family: 'Rajdhani', sans-serif;">
+                <li><a href="https://www.instagram.com/packetpecas/" style="color: white"><i class="fa fa-instagram"></i></a></li>
+                <li>(81) 4125-1010</li>
+                <li>packetpecas@gmail.com</li>
             </ul>
         </div>
+        <br>
     </footer>
 
 </body>
