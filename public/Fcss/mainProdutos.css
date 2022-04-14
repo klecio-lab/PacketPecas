@@ -348,6 +348,7 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .dp-menu ul li a:hover {
+  width: 100% !important;
   background-color: black !important;
   border: black !important;
   border-style: solid !important;
@@ -370,11 +371,14 @@ font-family: 'Montserrat', sans-serif;
   float: center !important;
   border: black !important;
   border-style: solid !important;
-  width: 100% !important;
+  width: auto !important;
+  left: auto !important;
 }
 
 .dp-menu ul ul li a {
   display: block !important;
+  font-size: 20px !important;
+  height: auto !important;
 }
 
 .estilo{
