@@ -72,112 +72,166 @@
 
 </head>
 <body>
-<nav class="white" style="padding:0px 10px; position: fixed;  z-index:1111;  height: 15% !important;">
-	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{ asset('Fimg/logot.png') }}" alt="logo"> </a>
 
-		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
-			<i class="material-icons">menu</i>
-		</a>
-
-		<ul class="right hide-on-med-and-down "  style="z-index:1112;">
-    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
-			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
-			<li><a href="{{ route('contato') }}">Contato</a></li>
-      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
-			<li><a href="{{ route('login') }}">Entrar</a></li>
-		</ul>
-	</div>
-</nav>
-
-<ul class="sidenav" id="mobile-nav"  style="z-index:1112;">
-	    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
-			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
-			<li><a href="{{ route('contato') }}">Contato</a></li>
-      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
-			<li><a href="{{ route('login') }}">Entrar</a></li>
-</ul>
+  @include('templateFront.navbar')
      
 @foreach($peca as $pecas)
 <div class="row center">
   <div class="col s12 m6 l6 espacoCima">
-    <img class="imgPeça" src="{{ asset($pecas['IMAGEM']) }}" width='400px' height='400px' alt="Produtos">
-  </div>
-    
-  <div class="col s12 m6 l6 espacoCima">
-    <div class="valores">
-      <h1 class="titulo"><span>{{ $pecas['NOME'] }}</span></h1>
-      <hr class="hr2">
-      
-      <p class="text-sub textos"><span>{{ $pecas['DESCRICAO'] }}</span></p>
 
-      <div class="text-sub infoProdutos">
-        <button class="dropdown-btn textos">CODIGO DO PRODUTO: <br>
-        {{ $pecas['CODIGO'] }}
-        </button>
-      </div>
+    @php
+        $Slide = explode('\,', $pecas['IMAGEM']);
+        array_pop($Slide);
 
-      <div class="text-sub infoProdutos">
-        <button class="dropdown-btn textos">PRECO DO PRODUTO: <br>
-        R${{ $pecas['PRECO'] }}
-        </button>
-      </div>
+        $descricao = $pecas['DESCRICAO'];
+        $descricao = str_replace('#!', '<b>', $descricao);
+        $descricao = str_replace('#.', '</b>', $descricao);
+        
+        $contador = 0;
+        $contador2 = 1;
 
-      <hr class="hr3">
+    @endphp
 
-      {{-- PARTE DO CARRINHO DE COMPRAS --}}
+{{-- <img src="{{ asset($item) }}"> --}}
+          <center>
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+          @foreach ($Slide as $item) 
 
-      <pre><button class="button button1" onclick="Salvar()" >ADICIONAR AO CARRINHO</button><button class="button button3" onclick="consultor()">CONSULTOR DE VENDA</button></pre><br>
+              <!-- Full-width images with number and caption text -->
+              <div class="mySlides fade">
+                <div class="numbertext">{{ $contador }} / {{ count($Slide) }}</div>
+                <img class="materialboxed" id="img1" src="{{ asset($item) }}" width='400px' height='400px'>
+              </div>   
 
-      {{-- PARTE DO CARRINHO LISTA DE PRODUTOS --}}
-    <div id="refresh">
-      <div class="col-25">
-        <div class="container4">
-            <h4>Carrinho
-              <span class="price" style="color:rgb(0, 0, 0)">
-                <i class="fa fa-shopping-cart"></i>
-                <b id='totalpedido'></b>
-              </span>
-            </h4>
+              @php $contador = $contador + 1; @endphp
 
-          <p id="carrinho">
-          </p>
+            @endforeach
 
-            <hr>
-
-            <div id="valortotal">
-            </div>
-            
-            <a><button onclick="Enviar('testando')" class="buttonn button4"> Comprar </button></a>
-            <a><button class="limpar" onclick="limparCarrinho()"> Limpar </button></a>
         </div>
-      </div>
-    </div>
 
-    </div>
+        <div style="text-align:center">
+            @foreach ($Slide as $item) 
+                <button onclick="currentSlide({{ $contador2 }})" style="box-shadow: none !important; background-color: white!important;"><img src="{{ asset($item) }}" width='100px' height='100px'></button>
+              @php $contador2 = $contador2 + 1; @endphp
+            @endforeach
+        </div>
+      </center>
 
-  </div>
-</div>
+          </div>
+            
+          <div class="col s12 m6 l6 espacoCima">
+            <div class="valores">
+              <h1 class="titulo"><span>{{ $pecas['NOME'] }}</span></h1>
+              <hr class="hr2">
+
+              <div class="text-sub infoProdutos">
+                <button class="dropdown-btn textos"  style="color: green !important">DESCRIÇÃO:  <br>
+                  <p class="text-sub textos" ><span  style="color: black !important">@php echo nl2br($descricao); @endphp</span></p>
+                </button>
+              </div>
+              
+
+              <div class="text-sub infoProdutos">
+                <button class="dropdown-btn textos">CODIGO DO PRODUTO: <br>
+                {{ $pecas['CODIGO'] }}
+                </button>
+              </div>
+
+              <div class="text-sub infoProdutos">
+                <button class="dropdown-btn textos">PRECO DO PRODUTO: <br>
+                R${{ $pecas['PRECO'] }}
+                </button>
+              </div>
+
+              <hr class="hr3">
+
+              {{-- PARTE DO CARRINHO DE COMPRAS --}}
+
+              <pre><button class="button button1" onclick="Salvar()" >ADICIONAR AO CARRINHO</button><button class="button button3" onclick="consultor()">CONSULTOR DE VENDA</button></pre><br>
+
+              {{-- PARTE DO CARRINHO LISTA DE PRODUTOS --}}
+            <div id="refresh">
+              <div class="col-25">
+                <div class="container4">
+                    <h4>Carrinho
+                      <span class="price" style="color:rgb(0, 0, 0)">
+                        <i class="fa fa-shopping-cart"></i>
+                        <b id='totalpedido'></b>
+                      </span>
+                    </h4>
+
+                  <p id="carrinho">
+                  </p>
+
+                    <hr>
+
+                    <div id="valortotal">
+                    </div>
+                    
+                    <a><button onclick="Enviar('testando')" class="buttonn button4"> Comprar </button></a>
+                    <a><button class="limpar" onclick="limparCarrinho()"> Limpar </button></a>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+          </div>
+        </div>
 
       @endforeach
 
-    
-
-      <footer>
-        <div class="footer-content">
-          <img src="Fimg/LogoFooter.png" alt="logo">
-            <p class="footer-h2">Facilidade e segurança para tornar seu processo mais eficiente, conte com a confiança desta parceria.</p>
-            <ul style="color: white; font-family: 'Rajdhani', sans-serif;">
-                <li><a href="https://www.instagram.com/packetpecas/" style="color: white"><i class="fa fa-instagram"></i></a></li>
-                <li>(81) 4125-1010</li>
-                <li>packetpecas@gmail.com</li>
-            </ul>
-        </div>
-        <br>
-    </footer>
+      @include('templateFront.footer')
 
       <script src="{{ asset('Fjs/main.js') }}"></script> 
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, options);
+    document.getElementById("img1").style.zIndex = "1";
+  });
+
+
+          // Or with jQuery
+
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+      </script>
+    
+    <script>
+      let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+    </script>
 
       <script>
         $(document).ready(function(){

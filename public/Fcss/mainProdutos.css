@@ -312,3 +312,84 @@ footer{
 font-family: 'Montserrat', sans-serif;
 
 }
+
+/* parte de categorias */
+
+:root {
+  --cor-fundo: rgb(34, 41, 37);
+  --cor-hover: rgb(118, 180, 145);
+}
+
+.dp-menu ul {
+  list-style-type: none;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+.dp-menu ul {
+  background-color: green;
+  float: center !important;
+}
+
+.dp-menu ul li {
+  display: inline !important;
+  position: relative !important;
+}
+
+.dp-menu ul li a {
+  color: white !important;
+  text-decoration: none!important;
+  display: inline-block !important;
+  padding: 10px !important;
+  transition: background .3s !important;
+}
+
+.dp-menu ul li a:hover {
+  background-color: black !important;
+}
+
+/*sub menu*/
+.dp-menu ul ul {
+  display: none !important;
+  left: 0 !important;
+  position: absolute !important;
+}
+
+.dp-menu ul li:hover ul {
+  display: block !important;
+}
+
+.dp-menu ul ul {
+  float: center !important;
+  width: 100% !important;
+}
+
+.dp-menu ul ul li a {
+  display: block !important;
+}
+
+.estilo{
+  background-color: green !important;
+  height: 7em !important;
+  position: block !important;
+  float: center !important;
+}
+.estilo ul{
+  margin: 0 !important;
+  position: absolute !important;
+  float: center !important;
+  left: 31% !important;
+  /* margin-right: -50% !important; */
+  /* transform: translate(-50%, -50%) !important;  */
+
+  /* top: 50% !important;
+  margin-right: -50% !important;
+  transform: translate(-50%, -50%) !important; */
+} 
+
+@media only screen and (max-width: 600px) {
+  .estilo {
+    display: none;
+  }
+}

@@ -45,50 +45,9 @@ src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
 
-<nav class="black" style="padding:0px 10px; position: fixed; z-index: 1111;">
-	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/LogoBranca.png" alt="logo"> </a>
-
-		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
-			<i class="material-icons">menu</i>
-		</a>
-
-		<ul class="right hide-on-med-and-down "  >
-    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
-			<li><a href="{{ route('Products') }}">Produtos</a></li>
-			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
-      <li><a href="{{ route('Geral') }}">Geral</a></li>
-      <li><form method="POST" action="{{ route('logout') }}">
-      @csrf
-      <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                      this.closest('form').submit();">
-          {{ __('Sair') }}
-    </a>
-  </form></li>
-		</ul>
-	</div>
-</nav>
-
-<ul class="sidenav" id="mobile-nav">
-      <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
-			<li><a href="{{ route('Products') }}">Produtos</a></li>
-			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
-      <li><a href="{{ route('Geral') }}">Geral</a></li>
-      <li><form method="POST" action="{{ route('logout') }}">
-      @csrf
-      <a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                  this.closest('form').submit();">
-      {{ __('Sair') }}
-      </a>
-      </form></li>
-</ul>
-<br><br><br><br>
+@include('templates.navbar')
     <center>
-    <img src="{{ asset('logot.svg') }}"  alt="">
+    <img src="{{ asset('Fimg/logot.png') }}"  alt="">
     <div class="row container center">
         <form class="col s12" enctype="multipart/form-data" method="post" action="{{ route('Finalizar') }}" >
             <div class="row">
@@ -195,23 +154,8 @@ src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
     </div>
     </div></center>
 
+    @include('templates.footer')
     
-
-    <footer class="page-footer center black">
-          <div class="container center">
-            <div class="row">
-              <div class="col l12 s12 ">
-                <h5 class="white-text">PacketPeças</h5>
-                <p class="grey-text text-lighten-4">O sucesso é a soma de pequenos esforços do dia a dia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2021 PacketPeças
-            </div>
-          </div>
-        </footer>
 </body>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
