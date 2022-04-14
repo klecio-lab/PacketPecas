@@ -334,10 +334,12 @@ font-family: 'Montserrat', sans-serif;
 
 .dp-menu ul li {
   display: inline !important;
-  position: relative !important;
+  text-align: center !important;
+  /* position: relative !important; */
 }
 
 .dp-menu ul li a {
+  text-align: center !important;
   color: white !important;
   text-decoration: none!important;
   display: inline-block !important;
@@ -347,6 +349,8 @@ font-family: 'Montserrat', sans-serif;
 
 .dp-menu ul li a:hover {
   background-color: black !important;
+  border: black !important;
+  border-style: solid !important;
 }
 
 /*sub menu*/
@@ -357,11 +361,15 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .dp-menu ul li:hover ul {
-  display: block !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .dp-menu ul ul {
   float: center !important;
+  border: black !important;
+  border-style: solid !important;
   width: 100% !important;
 }
 
