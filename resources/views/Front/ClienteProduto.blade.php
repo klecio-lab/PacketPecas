@@ -114,6 +114,12 @@
 
 
       <div id="produtos">
+        @if ($produto == "Nenhum produto encontrado")
+            
+        <h1>Nenhum produto encontrado na Categoria</h1>
+            
+        @else
+            
         @foreach($produto as $produtos)
         <div class="produtos-single">
             <center>
@@ -141,12 +147,18 @@
             <a href="{{ asset('') }}ClienteProduto/{{ $produtos->id }}"> Selecionar </a>
             </div>
           @endforeach
+
+        @endif
+        
       </div>
 
-        
-      <div class='center'>
-      {{ $produto->links('shared.paginacao') }}
-        </div>
+      @if ($produto == "Nenhum produto encontrado")
+        <h2 style="display: none">nada aqui</h2>
+        @else
+        <div class='center'>
+          {{ $produto->links('shared.paginacao') }}
+       </div>
+      @endif
 
       @include('templateFront.footer')
       

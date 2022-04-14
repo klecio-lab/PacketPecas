@@ -1,6 +1,6 @@
 <nav class="white" style="padding:0px 20px; position: fixed; z-index:1111; height: 15% !important; width: 100% !important;">
 	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/logot.png" alt="logo"> </a>
+    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="{{asset('')}}Fimg/logot.png" alt="logo"> </a>
 
 		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
 			<i class="material-icons">menu</i>

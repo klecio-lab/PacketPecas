@@ -30,7 +30,16 @@ class ClienteController extends Controller
     public function subcategoria($id)
     {
         $produto = cadastroproduto::where('subcategoria', $id)->paginate(4)->withQueryString();
-        return view('Front.ClienteProduto', ['produto' => $produto]);
+        if(isset($produto)){
+            $produto = "Nenhum produto encontrado";
+        }
+        $categorias = DB::select('SELECT cat.categoria, subcat.id, subcat.subcategoria, subcat.categoriaPai  FROM categorias as cat INNER JOIN subcategorias as subcat ON cat.id = subcat.categoriapai');
+        $data = [
+            'categorias' => $categorias,
+            'produto' => $produto
+        ];
+
+        return view('Front.ClienteProduto', $data);
     }
     public function PesquisarProd(Request $request)
     {
