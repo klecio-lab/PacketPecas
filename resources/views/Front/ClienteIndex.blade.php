@@ -44,44 +44,23 @@
   }
 </style>
 
+
 </head>
 <body>
 
-<nav class="white" style="padding:0px 20px; position: fixed; z-index:1111; height: 15% !important; width: 100% !important;">
-	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/logot.png" alt="logo"> </a>
-
-		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
-			<i class="material-icons">menu</i>
-		</a>
-
-		<ul class="right hide-on-med-and-down"  >
-    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
-			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
-			<li><a href="{{ route('contato') }}">Contato</a></li>
-      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
-			<li><a href="{{ route('login') }}">Entrar</a></li>
-      <li><a href="https://www.instagram.com/packetpecas/"><i class="fa fa-instagram"></i></a></li>
-		</ul>
-	</div>
-</nav>
-
-<ul class="sidenav" id="mobile-nav" style="z-index:1112;">
-	    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
-			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
-			<li><a href="{{ route('contato') }}">Contato</a></li>
-      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
-			<li><a href="{{ route('login') }}">Entrar</a></li>
-      <li><a href="https://www.instagram.com/packetpecas/"><i class="fa fa-instagram"></i></a></li>
-</ul>
-<!-- <script src="Fjs/main.js"></script>    -->
+@include('templateFront.navbar')
 
 <center>
-<div class="row center" style="background-image: url({{ asset('Fimg/maquina3.png') }}); height:auto; width: 100%;">
+
+
+<div class="row center" style="background-color: white; height:auto; width: 100%; background-size: cover; margin-bottom: 0 !important">
+  <div class="col s12 m6 l6">
+    <img  class="" style="margin-top: 120px;" src="Fimg/logoGrande.png" alt="logo">
+  </div>
   <div class="col s12 m6 l6">
       <div style="">   
           <h2 style="float: left;text-align: left; margin-top: 170px;">
-          <p style="font-size: 22px; color:white;"><b>
+          <p style="font-size: 22px; color:color;"><b>
           Somos a <span>Packet Peças</span>, uma loja autorizada <span>INDUMAK.</span>
           Facilidade e segurança para tornar seu processo mais
           eficiente, conte com a confiança desta parceria.
@@ -89,65 +68,101 @@
           </b>
         </div>
   </div>
-
-  <div class="col s12 m6 l6">
-    <img  class="" style="margin-top: 120px;" src="Fimg/logoGrande.png" alt="logo">
-  </div>
-
+  
 </div>
+</center> 
 
+<center>
+<nav class="dp-menu estilo">
+  <ul>
+    @php
+        $categoriaAtual = "";
+        $iniciar = 0;
+        $categoriaAtual1 = "";
+        $SubCategoriaAtual = "";
+    @endphp
+
+    @foreach ($categorias as $tipos)
+
+    @if ($iniciar != 0)
+          @if ($categoriaAtual1 != $tipos->categoria)
+            </ul>
+            </li>
+          @endif
+        @endif
+
+        @if ($categoriaAtual != $tipos->categoria)
+          <li><a href="#">{{ $tipos->categoria }}</a>
+          <ul>
+        @endif
+                <li><a href="{{ asset('') }}pesquisar/{{ $tipos->id }}">{{ $tipos->subcategoria }}</a></li>
+        @php
+            $categoriaAtual = $tipos->categoria;
+            $categoriaAtual1 = $tipos->categoria;
+            $SubCategoriaAtual = $tipos->subcategoria;
+            $iniciar = 1;
+        @endphp
+    @endforeach
+  </ul>
+</nav>
 </center>
-          <br><br>
-      <div class="row center">
 
-          <div class="col s12 m6 l3">
-              <img src="Fimg/qualidade.png" alt="qualidade">
-              <h3> Qualidade OEM </h3>
-              <p> Padrões rigorosos para garantir segurança e confiabilidade </p>
-          </div>
+          <h1 align="center">Nossos Segmetos</h1>
+          <div class="carousel">
+              <br>
+            <button>
+  
+              <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/TeflonAdesivo.jpg" width="300px" height="200px"><p align="center">TEFLON ADESIVO</p></a>
+              <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/FitaDeDatador.jfif" width="300px" height="200px"><p align="center">FITA DE DATADOR</p></a>
+              <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/AcopladorRele.jpg" width="300px" height="200px"><p align="center">COMPONENTES ELÉTRICOS</p></a> 
+              <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/CILINDRO FESTO.jpg" width="300px" height="200px"><p align="center">LINHA DE PNEUMÁTICOS FESTO</p></a>
+              <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/cilindro SMC.jpg" width="300px" height="200px"><p align="center">LINHA DE PNEUMÁTICOS SMC</p></a>
+              <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/CORREIAS.jpg" width="300px" height="200px"><p align="center">CORREIAS</p></a>
+              <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/INSUMOS.jpg" width="300px" height="200px"><p align="center">INSUMOS</p></a>
+              <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/MECANICO.jpg" width="300px" height="200px"><p align="center">COMPONENTES MECÂNICOS </p></a>
+            
+            </button>
+        </div>
+      
+      <center>
+        <button class="prev btn black"><i class="material-icons">navigate_before</i> </button>
+        <button class="next btn black"><i class="material-icons">navigate_next</i> </button>
+        </center>
 
-          <div class="col s12 m6 l3">
-            <img src="Fimg/expertise.png" alt="expertise">
-            <h3> Expertise </h3>
-            <p> Sempre projetando e fornecendo equipamentos e peças robustas</p>
-          </div>
+        <br><br>
 
-          <div class="col s12 m6 l3">
-            <img src="Fimg/disponibilidade.png" alt="disponibilidade">
-            <h3>Disponibilidade</h3>
-            <p> Sempre com disponibilidade para fornecemos peças onde e quando você precisar</p>
-          </div>
-
-          <div class="col s12 m6 l3">
-            <img src="Fimg/Soluções.png" alt="soluções">
-            <h3>Soluções de ponta a ponta</h3>
-            <p> Peças originais, Peças de terceiros e até kits completos, podemos oferecer suporte ao seu processo </p>
-           </div>
-
-       </div>
        <hr>
+       <br>
 
-       <h1 align="center">Nossos Segmetos</h1>
-        <div class="carousel">
-            <br>
-          <button>
+       <div class="row center">
 
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/TeflonAdesivo.jpg" width="300px" height="200px"><p align="center">TEFLON ADESIVO</p></a>
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/FitaDeDatador.jfif" width="300px" height="200px"><p align="center">FITA DE DATADOR</p></a>
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/AcopladorRele.jpg" width="300px" height="200px"><p align="center">COMPONENTES ELÉTRICOS</p></a> 
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/CILINDRO FESTO.jpg" width="300px" height="200px"><p align="center">LINHA DE PNEUMÁTICOS FESTO</p></a>
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/cilindro SMC.jpg" width="300px" height="200px"><p align="center">LINHA DE PNEUMÁTICOS SMC</p></a>
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/CORREIAS.jpg" width="300px" height="200px"><p align="center">CORREIAS</p></a>
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/INSUMOS.jpg" width="300px" height="200px"><p align="center">INSUMOS</p></a>
-            <a class="carousel-item" href="{{ route('ClienteProduto') }}"><img src="Fimg/MECANICO.jpg" width="300px" height="200px"><p align="center">COMPONENTES MECÂNICOS </p></a>
-          
-          </button>
-      </div>
-    
-    <center>
-      <button class="prev btn black"><i class="material-icons">navigate_before</i> </button>
-      <button class="next btn black"><i class="material-icons">navigate_next</i> </button>
-      </center>
+        <div class="col s12 m6 l3">
+            <img src="Fimg/qualidade.png" alt="qualidade">
+            <h3> Qualidade OEM </h3>
+            <p> Padrões rigorosos para garantir segurança e confiabilidade </p>
+        </div>
+
+        <div class="col s12 m6 l3">
+          <img src="Fimg/expertise.png" alt="expertise">
+          <h3> Expertise </h3>
+          <p> Sempre projetando e fornecendo equipamentos e peças robustas</p>
+        </div>
+
+        <div class="col s12 m6 l3">
+          <img src="Fimg/disponibilidade.png" alt="disponibilidade">
+          <h3>Disponibilidade</h3>
+          <p> Sempre com disponibilidade para fornecemos peças onde e quando você precisar</p>
+        </div>
+
+        <div class="col s12 m6 l3">
+          <img src="Fimg/Soluções.png" alt="soluções">
+          <h3>Soluções de ponta a ponta</h3>
+          <p> Peças originais, Peças de terceiros e até kits completos, podemos oferecer suporte ao seu processo </p>
+         </div>
+
+     </div>
+
+     <hr>
 
        
        <!-- parte do serviçosa -->
@@ -171,8 +186,8 @@
             </div>
 
             <div class="col s12 m6 l6">
-              <a href="https://api.whatsapp.com/send?phone=5581998995121&text=estou%20testando%20a%20api%20de%20enviar%20mensagem%20via%20whatzap%20">
-              <img  class="peças-1" src="Fimg/homemTrabalhando.png" alt="Trabalho" width="500" height="300">
+              <a href="https://api.whatsapp.com/send?phone=5581998944045&text=estou%20testando%20a%20api%20de%20enviar%20mensagem%20via%20whatzap%20">
+              <img  class="peças-1" src="{{ asset('') }}/manutencao.jpg" alt="Trabalho" width="500" height="300">
               <div class="button button4">Serviços para manutenção</div></a>
             </div>
         </div>
@@ -182,20 +197,18 @@
        </div>
 
       
-       <footer>
-        <div class="footer-content">
-          <img src="Fimg/LogoFooter.png" alt="logo">
-            <p class="footer-h2">Facilidade e segurança para tornar seu processo mais eficiente, conte com a confiança desta parceria.</p>
-            <ul style="color: white; font-family: 'Rajdhani', sans-serif;">
-                <li><a href="https://www.instagram.com/packetpecas/" style="color: white"><i class="fa fa-instagram"></i></a></li>
-                <li>(81) 4125-1010</li>
-                <li>packetpecas@gmail.com</li>
-            </ul>
-        </div>
-        <br>
-    </footer>
+      @include('templateFront.footer')
 
 </body>
+
+<script>
+  $('.dropdown-trigger').dropdown();
+</script>
+
+<script>
+    M.AutoInit();
+</script>
+
 <script>
 	$(document).ready(function(){
  		$('.sidenav').sidenav();

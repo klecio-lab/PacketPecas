@@ -5,14 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\cadastroproduto;
 use App\Models\pedido;
+use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
     public function ClienteProduto()
     {
         $produto = cadastroproduto::paginate(6)->withQueryString();
-        // dd($produto);
-        return view('Front.ClienteProduto', compact('produto'));
+
+        $categorias = DB::select('SELECT cat.categoria, subcat.id, subcat.subcategoria, subcat.categoriaPai  FROM categorias as cat INNER JOIN subcategorias as subcat ON cat.id = subcat.categoriapai');
+        $data = [
+            'categorias' => $categorias,
+            'produto' => $produto
+        ];
+
+        return view('Front.ClienteProduto', $data);
     }
 
     public function SubPagina($id, Request $request)
@@ -20,15 +27,22 @@ class ClienteController extends Controller
         $peca = cadastroproduto::select("*")->where([["id", "=", $id]])->get();
         return view('Front.ClientePeca', compact('peca'));
     }
-    public function contato()
+    public function subcategoria($id)
     {
-        return view("Front.Contato");
+        $produto = cadastroproduto::where('subcategoria', $id)->paginate(4)->withQueryString();
+        return view('Front.ClienteProduto', ['produto' => $produto]);
     }
     public function PesquisarProd(Request $request)
     {
-        $data = $request->only('buscar');
-        $produto = cadastroproduto::where('CODIGO', $data['buscar'])->paginate(4)->withQueryString();
+        $busca = $request->only('buscar');
+        $busca = "%" . $busca['buscar'] . "%";
+        $produto = cadastroproduto::where('NOME', 'LIKE', $busca)->paginate(4)->withQueryString();
         return view('Front.ClienteProduto', compact('produto'));
+    }
+
+    public function contato()
+    {
+        return view("Front.Contato");
     }
 
     public function sobre()

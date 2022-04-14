@@ -5,38 +5,72 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\cadastroproduto;
 use App\Models\pedido;
+use App\Models\categorias;
+use App\Models\subcategorias;
+use Illuminate\Support\Facades\DB;
 
 class ProdutoController extends Controller
 {
+    public function __construct(categorias  $categorias, subcategorias $subcategorias )
+    {
+        $this->categorias = $categorias;
+        $this->subcategorias = $subcategorias;
+    }
 
     public function Adicionar()
     {
-        return view('prod');
+        $codigos = cadastroproduto::all();
+        $categoria = $this->categorias->orderBy('categoria','ASC')->get();
+        $subcategoria = $this->subcategorias->where('id', '=' , 0)->orderBy('subcategoria', 'ASC')->get();
+        $subcategoriaFiltro = null;
+        $dados = null;
+        return view('prod', compact('codigos', 'categoria', 'subcategoria', 'subcategoriaFiltro', 'dados'));
+    }
+    public function FiltroSubcategoria($dados, Request $request){
+        $dados = urldecode($dados);
+        $dados = explode('!;', $dados);
+        // dd($dados);
+        $categoria = DB::select('select * from categorias');
+        $subcategoriaFiltro = DB::select('select * from subcategorias where categoriaPai = :id', ["id" => $dados[0]]);
+        return view('prod', compact('categoria', 'subcategoriaFiltro', 'dados'));
     }
     public function produtoUpdate(Request $request)
     {
 
-        $data = $request->only('nome', 'descricao', 'imagem', 'preco', 'codigo');
+        $data = $request->only('nome', 'descricao', 'imagem', 'preco', 'codigo', 'subcategoria');
         $imagem = $data['imagem'];
-        
-        if ($imagem->isValid())
+        if (empty($request->file('imagem')))
         {
+            #salvando as variaveis que vão para o bd
+            $passardados->NOME  = $data['nome'];
+            $passardados->DESCRICAO = $data['descricao'];
+            $passardados->PRECO = $data['preco'];
+            $passardados->CODIGO = $data['codigo'];
+            $passardados->subcategoria = $data['subcategoria'];
+        }else{
             $passardados = New cadastroproduto;
             #salva a imagem na pasta
-            $imagemPath = $imagem->store('imagem');
+            $uploadImage = [];
+            $cont = 0;
+            $nomesImagens = "";
+            foreach ($request->file('imagem') as $photos){
+                $uploadImage[] = ['photo' => $photos->store('imagem')];
+                $nomesImagens =  $uploadImage[$cont]['photo'] . "\," . $nomesImagens;
+                $cont = $cont + 1;
+            }    
 
             #salvando as variaveis que vão para o bd
             $passardados->NOME  = $data['nome'];
             $passardados->DESCRICAO = $data['descricao'];
-            $passardados->IMAGEM = $imagemPath;
+            $passardados->IMAGEM = $nomesImagens;
             $passardados->PRECO = $data['preco'];
             $passardados->CODIGO = $data['codigo'];
+            $passardados->subcategoria = $data['subcategoria'];
 
             $passardados->save();
-
         }
 
-        return view('prod');
+        return redirect('/produto');
     }
 
     public function produto()
@@ -48,14 +82,34 @@ class ProdutoController extends Controller
     public function editar($id, Request $request)
     {
         $produtoEdit = cadastroproduto::where('id', $id)->first();
-        return view('editar', ['valores' => $produtoEdit]);
+        $categoria = DB::select('select * from categorias');
+        $subcategoria = DB::select('select * from subcategorias');
+        $subcategoriaFiltro = null;
+
+        $data = [
+            'valores' => $produtoEdit,
+            'categoria' => $categoria,
+            'subcategoria' => $subcategoria,
+            'subcategoriaFiltro' => $subcategoriaFiltro
+        ];
+        return view('editar', $data);
+    }
+
+    public function editarCategoria($dados, Request $request)
+    {
+        $dados = urldecode($dados);
+        $dados = explode('!;', $dados);
+        // dd($dados);
+        $categoria = DB::select('select * from categorias');
+        $subcategoriaFiltro = DB::select('select * from subcategorias where categoriaPai = :id', ["id" => $dados[0]]);
+        return view('editar', compact('categoria', 'subcategoriaFiltro', 'dados'));
     }
     
     public function editarReg(Request $request)
     {
-        $data = $request->only('id', 'nome', 'descricao', 'imagem', 'preco', 'codigo');
+        $data = $request->only('id', 'nome', 'descricao', 'imagem', 'preco', 'codigo', 'subcategoria');
         $id = $data['id'];
-        // $imagem = $data['imagem'];
+        $imagem = $data['imagem'];
 
         $produtoEdit = cadastroproduto::where('id', $id)->first();
 
@@ -70,6 +124,7 @@ class ProdutoController extends Controller
             $produtoEdit->IMAGEM = $imagemPath;
             $produtoEdit->PRECO = $data['preco'];
             $produtoEdit->CODIGO = $data['codigo'];
+            $passardados->subcategoria = $data['subcategoria'];
 
             $produtoEdit->save();
         }
@@ -80,6 +135,7 @@ class ProdutoController extends Controller
             $produtoEdit->DESCRICAO = $data['descricao'];
             $produtoEdit->PRECO = $data['preco'];
             $produtoEdit->CODIGO = $data['codigo'];
+            $passardados->subcategoria = $data['subcategoria'];
 
             $produtoEdit->save();
         }
@@ -186,5 +242,4 @@ class ProdutoController extends Controller
         cadastroproduto::findOrFail($id)->delete();
         return redirect('/produto');
     }
-
 }
