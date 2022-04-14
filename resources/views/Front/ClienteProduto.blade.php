@@ -55,33 +55,9 @@
     <title>Produtos</title>
 </head>
 <body>
-<nav class="white" style="padding:0px 10px; position: fixed;  z-index:1111;  height: 15% !important;">
-	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/logot.png" alt="logo"> </a>
 
-		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
-			<i class="material-icons">menu</i>
-		</a>
+  @include('templateFront.navbar')
 
-		<ul class="right hide-on-med-and-down" >
-    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
-			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
-			<li><a href="{{ route('contato') }}">Contato</a></li>
-      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
-			<li><a href="{{ route('login') }}">Entrar</a></li>
-		</ul>
-	</div>
-</nav>
-
-<ul class="sidenav" id="mobile-nav" style="z-index:1112;">
-	    <li><a href="{{ route('ClienteHome') }}">Início</a></li>
-			<li><a href="{{ route('ClienteProduto') }}">Produtos</a></li>
-			<li><a href="{{ route('contato') }}">Contato</a></li>
-      <li><a href="{{ route('sobre') }}">Nossa Empresa</a></li>
-			<li><a href="{{ route('login') }}">Entrar</a></li>
-</ul>
-
-<script src="Fjs/main.js"></script>  
 
 <br><br><br><br>
 
@@ -89,6 +65,43 @@
       <h2>Peças e Produtos</h2>
       <hr class="hr1">
 </div>
+
+<center>
+  <nav class="dp-menu estilo">
+    <ul>
+      @php
+          $categoriaAtual = "";
+          $iniciar = 0;
+          $categoriaAtual1 = "";
+          $SubCategoriaAtual = "";
+      @endphp
+  
+      @foreach ($categorias as $tipos)
+  
+      @if ($iniciar != 0)
+            @if ($categoriaAtual1 != $tipos->categoria)
+              </ul>
+              </li>
+            @endif
+          @endif
+  
+          @if ($categoriaAtual != $tipos->categoria)
+            <li><a href="#">{{ $tipos->categoria }}</a>
+            <ul>
+          @endif
+                  <li><a href="{{ asset('') }}pesquisar/{{ $tipos->id }}">{{ $tipos->subcategoria }}</a></li>
+          @php
+              $categoriaAtual = $tipos->categoria;
+              $categoriaAtual1 = $tipos->categoria;
+              $SubCategoriaAtual = $tipos->subcategoria;
+              $iniciar = 1;
+          @endphp
+      @endforeach
+    </ul>
+  </nav>
+  </center>
+
+<br><br>
 
 <!-- filtro d e produtos -->
 <div class="container">
@@ -101,7 +114,33 @@
 
 
       <div id="produtos">
+        @foreach($produto as $produtos)
+        <div class="produtos-single">
+            <center>
+              {{-- <img src="{{ $produtos['IMAGEM'] }}`" widht='400px' height='200px'/> --}}
 
+              @php
+                        $Slide = explode('\,', $produtos->IMAGEM);
+                        array_pop($Slide);
+                    @endphp
+
+                    <div class="slider">
+                      <ul class="slides">
+                        @foreach ($Slide as $item)
+                          <li>
+                            <img src="{{ asset($item) }}"> <!-- random image -->
+                            <div class="caption center-align">
+                            </div>
+                          </li>
+                        @endforeach
+                      </ul>
+                    </div>
+
+            </center>
+            <p class="limitar">{{ $produtos->NOME }}</p>
+            <a href="{{ asset('') }}ClienteProduto/{{ $produtos->id }}"> Selecionar </a>
+            </div>
+          @endforeach
       </div>
 
         
@@ -109,74 +148,17 @@
       {{ $produto->links('shared.paginacao') }}
         </div>
 
-      <script>
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-        
-        for (i = 0; i < dropdown.length; i++) {
-          dropdown[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          var dropdownContent = this.nextElementSibling;
-          if (dropdownContent.style.display === "block") {
-          dropdownContent.style.display = "none";
-          } else {
-          dropdownContent.style.display = "block";
-          }
-          });
-        }
-        </script>
-
-      <script>
-      
-       const items = [
-        @foreach($produto as $produtos)
-           {
-               id: {{ $produtos['id'] }},
-               nome: '{{ $produtos['NOME'] }}',
-               img: "{{ $produtos['IMAGEM'] }}",
-               quantidade: 0
-           },
-      @endforeach
-
-       ]
-
-       inicializarLoja = () => {
-           var containerProtudos = document.getElementById('produtos');
-           items.map((val)=>{
-               containerProtudos.innerHTML+=`
-               
-               <div class="produtos-single">
-               <center>
-                <img src="`+val.img+`" widht='400px' height='200px'/>
-                </center>
-                <p class="limitar">`+val.nome+`</p>
-                <a href="ClienteProduto/${val.id}"> Selecionar </a>
-                </div>
-               `;
-
-           })
-       }
-       inicializarLoja();
-
-      </script>
-
-
-      <footer>
-        <div class="footer-content">
-          <img src="Fimg/LogoFooter.png" alt="logo">
-            <p class="footer-h2">Facilidade e segurança para tornar seu processo mais eficiente, conte com a confiança desta parceria.</p>
-            <ul style="color: white; font-family: 'Rajdhani', sans-serif;">
-                <li><a href="https://www.instagram.com/packetpecas/" style="color: white"><i class="fa fa-instagram"></i></a></li>
-                <li>(81) 4125-1010</li>
-                <li>packetpecas@gmail.com</li>
-            </ul>
-        </div>
-        <br>
-    </footer>
+      @include('templateFront.footer')
       
 
 
 </body>
+
+<script>
+  $(document).ready(function(){
+            $('.slider').slider();
+          });
+</script>
 
 <script>
 	$(document).ready(function(){

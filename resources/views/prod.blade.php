@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,97 +18,88 @@
     <title>Pagina de Produtos</title>
 
 <!-- sidenav -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+<script>
+    $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
+
 </head>
 <body>
 
-<nav class="black" style="padding:0px 10px; position: fixed; z-index: 1111;">
-	<div class="nav-wrapper">
-    <a href="{{ route('ClienteHome') }}" class="brand-logo"> <img src="Fimg/LogoBranca.png" alt="logo"> </a>
+@include('templates.navbar')
 
-		<a href="#" class="sidenav-trigger" data-target="mobile-nav">
-			<i class="material-icons">menu</i>
-		</a>
+<center>
+    <img src="{{ asset('Fimg/logot.png') }}" alt="">
+</center>
 
-		<ul class="right hide-on-med-and-down "  >
-    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
-			<li><a href="{{ route('Products') }}">Produtos</a></li>
-			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
-      <li><a href="{{ route('Geral') }}">Geral</a></li>
-      <li><form method="POST" action="{{ route('logout') }}">
-      @csrf
-      <a href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                      this.closest('form').submit();">
-          {{ __('Sair') }}
-    </a>
-  </form></li>
-		</ul>
-	</div>
-</nav>
-
-<ul class="sidenav" id="mobile-nav">
-      <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-			<li><a href="{{ route('AddProd') }}">Adicionar</a></li>
-			<li><a href="{{ route('Products') }}">Produtos</a></li>
-			<li><a href="{{ route('Pedidos') }}">Pedidos</a></li>
-      <li><a href="{{ route('Geral') }}">Geral</a></li>
-      <li><form method="POST" action="{{ route('logout') }}">
-      @csrf
-      <a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                  this.closest('form').submit();">
-      {{ __('Sair') }}
-      </a>
-      </form></li>
-</ul>
-<br><br><br><br>
-
-    <center>
-    <img src="logot.svg" alt="">
     <div class="row container center">
-        <form class="col s12" enctype="multipart/form-data" method="post" action="{{ route('products.update') }}" >
+        <form class="col s12" name="produtoForm" id="produtoForm" enctype="multipart/form-data" method="post" action="{{ route('products.update') }}" >
             <div class="row">
             @csrf
             {{-- nome do produtos --}}
-                <div class="input-field col s12">
-                    <input  id="nome" name='nome' type="text" required minlength="2" class="validate">
+                <div class="input-field col s12 l12">
+                    <input  id="nome" name='nome' value="@php  if (isset($dados)) {echo $dados[1];} @endphp" type="text" required minlength="2" class="validate">
                     <label for="nome">Nome do Produto</label>
                 </div>
 
                 {{-- descrição produtos --}}
-                <div class="input-field col s12">
-                    <input id="descricao" name='descricao' type="text" required minlength="2" class="validate">
+                <div class="input-field col s12 l12">
+                    <textarea id="descricao" name='descricao' type='text' value="" class="materialize-textarea" required minlength="2">@php  if (isset($dados)) {echo ($dados[2]);} @endphp</textarea>
                     <label for="descricao">Descrição do Produto</label>
                 </div>
 
                 {{-- preço produtos --}}
-                <div class="input-field col s6">
-                    <input id="preco" name='preco'  type="number" required pattern="[0-9]+$" required min="-1" step="any" max="999999999999999" class="validate">
+                <div class="input-field col s12 l2">
+                    <input id="preco" name='preco' value="@php  if (isset($dados)) {echo $dados[3];} @endphp" type="number" required pattern="[0-9]+$" required min="-1" step="any" max="999999999999999" class="validate">
                     <label for="preco">Preço do Produto</label>
                 </div>
 
                 {{-- codigo produtos --}}
-                <div class="input-field col s6">
-                    <input id="codigo" name='codigo'  type="number" required pattern="[0-9]+$" required min="-1" max="999999999999999" class="validate">
+                <div class="input-field col s12 l2">
+                    <input id="codigo" name='codigo' value="@php  if (isset($dados)) {echo $dados[4];} @endphp" type="number" class="validate" required pattern="[0-9]+$" required min="-1" max="999999999999999" >
                     <label for="codigo">Código do Produto</label>
                 </div>
 
+                <div class="input-field col s12 l4">
+                  {{-- filtro de categoria --}}
+                  <select id="selectCategoria"  name="selectCategoria" class="form-select" aria-label="Default select example">
+                      <option selected value='0' disabled>Selecione a Categoria</option>
+                      @foreach ($categoria as $categorias)
+                        <option value="{{ $categorias->id }}">{{ $categorias->categoria }}</option>
+                      @endforeach
+                  </select>
+                  <label>Selecione a Categoria</label>
+                </div>
+
+                <div class="input-field col s12 l4">
+                  <select id="subcategoria" @if($subcategoriaFiltro == null) disabled @endif name="subcategoria">
+                    <option value="0" required  disabled selected>Choose your option</option>
+                    @if($subcategoriaFiltro != null)
+                        @foreach($subcategoriaFiltro as $valores)
+                          <option value="{{ $valores->id }}">{{ $valores->subcategoria }}</option>
+                        @endforeach
+                      @endif
+                  </select>
+                  <label>Selecione Sua Subcategoria</label>
+                </div>
+
                 {{-- upload imagem produtos --}}
-                <div class = "row">
+                <div class = "input-field col s12 l12">
                     <label>Carregue Sua Imagem</label>
                     <div class = "file-field input-field">
                         <div class = "btn black">
                             <span>Buscar</span>
-                            <input type="file"  accept="image/svg, image/png, image/jpeg" id='imagem' required name="imagem" />
+                            <input type="file"  accept="image/svg, image/png, image/jpeg, image/jpg" id='imagem' required name="imagem[]" multiple />
                         </div>
                         <div class = "file-path-wrapper">
-                            <input class = "file-path validate s4" type = "text" placeholder = "Carregue sua Imagem" />
+                            <input class = "file-path validate s4" type = "text" placeholder = "Carregue sua Imagem" style="color: green" />
                         </div>
                     </div>
                 </div>
@@ -120,39 +111,45 @@
             
         </form>
     </div>
-    </div></center>
+    </div>
 
-    
+    @include('templates.footer')
 
-    <footer class="page-footer center black">
-          <div class="container center">
-            <div class="row">
-              <div class="col l12 s12 ">
-                <h5 class="white-text">PacketPeças</h5>
-                <p class="grey-text text-lighten-4">O sucesso é a soma de pequenos esforços do dia a dia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2021 PacketPeças
-            </div>
-          </div>
-        </footer>
 </body>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-    function myFunction(id) {
-        Swal.fire(
-  'Bom Trabalho!',
-  'Produto Cadastrado com Sucesso!',
-  'success'
-)
-}
+  $(document).ready(function () {
+   $('input').keypress(function (e) {
+        var code = null;
+        code = (e.keyCode ? e.keyCode : e.which);                
+        return (code == 13) ? false : true;
+   });
+});
 </script>
+
 <script>
-          $(document).ready(function(){
-            $('.sidenav').sidenav();
-          });
-        </script>
+  $(document).ready(function() {
+    $('#selectCategoria').change(function() {
+      var varURL = $("option:selected", this).val();
+      var nome = document.getElementById("nome").value;
+      var descricao = encodeURIComponent(document.getElementById("descricao").value);
+      var preco = document.getElementById("preco").value;
+      var codigo = document.getElementById("codigo").value;
+      var url =  `{{ asset('') }}Adicionar/${varURL}!;${nome}!;${descricao}!;${preco}!;${codigo}`;
+      location.href = url;
+      });
+    });
+</script>
+
+
+<script>
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+</script>
+
 </html>
+
+
+
