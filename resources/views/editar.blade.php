@@ -74,7 +74,7 @@
               <div class="input-field col s12 l4">
                 {{-- filtro de categoria --}}
                 <select id="selectCategoria"  name="selectCategoria" class="form-select" aria-label="Default select example">
-                    <option selected value='0' disabled>Selecione a Categoria</option>
+                    <option selected value="{{$categoriaAUX}}">@php  if (isset($categoriaAUX)) {echo $categoriaAUX;}else{echo "Selecione sua Categoria";} @endphp</option>
                     @foreach ($categoria as $categorias)
                       <option value="{{ $categorias->id }}">{{ $categorias->categoria }}</option>
                     @endforeach
@@ -84,7 +84,7 @@
 
               <div class="input-field col s12 l4">
                 <select id="subcategoria" @if($subcategoriaFiltro == null) disabled @endif name="subcategoria">
-                  <option value="0" required  disabled selected>Choose your option</option>
+                  <option value="@php  if (isset($subCategoriaName)) {$subCategoriaId;}@endphp" required  disabled selected>@php  if (isset($subCategoriaName)) {echo $subCategoriaName;}else{echo "Selecione sua SubCategoria";} @endphp</option>
                   @if($subcategoriaFiltro != null)
                       @foreach($subcategoriaFiltro as $valores)
                         <option value="{{ $valores->id }}">{{ $valores->subcategoria }}</option>

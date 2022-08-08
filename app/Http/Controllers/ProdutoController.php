@@ -31,8 +31,13 @@ class ProdutoController extends Controller
         $dados = explode('!;', $dados);
         // dd($dados);
         $categoria = DB::select('select * from categorias');
+        $categorias = DB::select('select categoria from categorias where id = :id', ["id" => $dados[0]]);
+        $categoriaAUX;
+        foreach($categorias as $cat){
+            $categoriaAUX = $cat->categoria;
+        }
         $subcategoriaFiltro = DB::select('select * from subcategorias where categoriaPai = :id', ["id" => $dados[0]]);
-        return view('prod', compact('categoria', 'subcategoriaFiltro', 'dados'));
+        return view('prod', compact('categoria', 'subcategoriaFiltro', 'dados', 'categoriaAUX'));
     }
     public function produtoUpdate(Request $request)
     {
@@ -81,18 +86,37 @@ class ProdutoController extends Controller
 
     public function editar($id, Request $request)
     {
-        $produtoEdit = cadastroproduto::where('id', $id)->first();
+        
+        $produtoEdit2 = cadastroproduto::where('id', $id)->get();
+        $produtoEditAux;
+        foreach($produtoEdit2 as $prodSubc){
+            $produtoEditAux = $prodSubc->subcategoria;
+        }
+        $subcategoriaEspecifica = subcategorias::where('id', $produtoEditAux)->get();
+        $subcategoriaEspecificaAUX;
+        $subCategoriaName;
+        $subCategoriaId;
+        foreach($subcategoriaEspecifica as $subc){
+            $subcategoriaEspecificaAUX = $subc->categoriaPai;
+            $subCategoriaName = $subc->subcategoria;
+            $subCategoriaId = $subc->id;
+        }
+        $categoriaEspecifica = categorias::where('id', $subcategoriaEspecificaAUX)->get();
+        $categoriaAUX;
+        foreach($categoriaEspecifica as $categoriaAUX){
+            $categoriaAUX = $categoriaAUX->categoria;
+        }
         $categoria = DB::select('select * from categorias');
         $subcategoria = DB::select('select * from subcategorias');
         $subcategoriaFiltro = null;
-
+        $produtoEdit = cadastroproduto::where('id', $id)->first();
         $data = [
             'valores' => $produtoEdit,
             'categoria' => $categoria,
             'subcategoria' => $subcategoria,
             'subcategoriaFiltro' => $subcategoriaFiltro
         ];
-        return view('editar', $data);
+        return view('editar', $data, compact('data', 'categoriaAUX', 'subCategoriaName', 'subCategoriaId'));
     }
 
     public function editarCategoria($dados, Request $request)
@@ -101,44 +125,67 @@ class ProdutoController extends Controller
         $dados = explode('!;', $dados);
         // dd($dados);
         $categoria = DB::select('select * from categorias');
+         $categorias = DB::select('select categoria from categorias where id = :id', ["id" => $dados[0]]);
+        $categoriaAUX;
+        foreach($categorias as $cat){
+            $categoriaAUX = $cat->categoria;
+        }
         $subcategoriaFiltro = DB::select('select * from subcategorias where categoriaPai = :id', ["id" => $dados[0]]);
-        return view('editar', compact('categoria', 'subcategoriaFiltro', 'dados'));
+        return view('editar', compact('categoria', 'subcategoriaFiltro', 'dados', 'categoriaAUX'));
     }
     
     public function editarReg(Request $request)
     {
         $data = $request->only('id', 'nome', 'descricao', 'imagem', 'preco', 'codigo', 'subcategoria');
         $id = $data['id'];
-        $imagem = $data['imagem'];
+
 
         $produtoEdit = cadastroproduto::where('id', $id)->first();
 
-        if (isset($data['imagem']))
+         if (empty($request->file('imagem')))
         {
-            $imagem = $data['imagem'];
-            $imagemPath = $imagem->store('imagem');
-
+            
             $produtoEdit->id  = $data['id'];
             $produtoEdit->NOME  = $data['nome'];
             $produtoEdit->DESCRICAO = $data['descricao'];
-            $produtoEdit->IMAGEM = $imagemPath;
             $produtoEdit->PRECO = $data['preco'];
             $produtoEdit->CODIGO = $data['codigo'];
-            $passardados->subcategoria = $data['subcategoria'];
+            if(!empty($request->subcategoria)){
+            $produtoEdit->subcategoria = $data['subcategoria'];
+            }
 
             $produtoEdit->save();
         }
         else
         {
+           
+             #salva a imagem na pasta
+            $uploadImage = [];
+            $cont = 0;
+            $nomesImagens = "";
+            foreach ($request->file('imagem') as $photos){
+                $uploadImage[] = ['photo' => $photos->store('imagem')];
+                $nomesImagens =  $uploadImage[$cont]['photo'] . "\," . $nomesImagens;
+                $cont = $cont + 1;
+            }    
             $produtoEdit->id  = $data['id'];
             $produtoEdit->NOME  = $data['nome'];
             $produtoEdit->DESCRICAO = $data['descricao'];
+            $produtoEdit->IMAGEM = $nomesImagens;
             $produtoEdit->PRECO = $data['preco'];
             $produtoEdit->CODIGO = $data['codigo'];
-            $passardados->subcategoria = $data['subcategoria'];
+            if(!empty($request->subcategoria)){
+            $produtoEdit->subcategoria = $data['subcategoria'];
+            }
 
             $produtoEdit->save();
         }
+
+       
+        
+            
+        
+
 
         return redirect('/produto');
     }
